@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" width="760" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">MedPoint Logo</title>
+  <desc id="desc">
+    MedPoint healthcare appointment logo with a medical location pin,
+    heartbeat line, and MedPoint wordmark.
+  </desc>
+
+  <!-- Logo Icon -->
+  <g transform="translate(18 18)">
+    <!-- Teal medical location pin -->
+    <path d="M92 4
+         C48 4 16 36 16 78
+         C16 116 49 145 92 178
+         C135 145 168 116 168 78
+         C168 36 136 4 92 4 Z" fill="#0d9488"></path>
+
+    <!-- White inner area -->
+    <path d="M92 20
+         C60 20 36 44 36 78
+         C36 104 59 128 92 153
+         C125 128 148 104 148 78
+         C148 44 124 20 92 20 Z" fill="#ffffff"></path>
+
+    <!-- Medical cross -->
+    <rect x="80" y="40" width="24" height="76" rx="6" fill="#8bd450"></rect>
+
+    <rect x="54" y="66" width="76" height="24" rx="6" fill="#8bd450"></rect>
+
+    <!-- ECG heartbeat line -->
+    <path d="M18 105
+         H55
+         L68 91
+         L82 118
+         L96 69
+         L110 112
+         L124 96
+         H166" fill="none" stroke="#0d9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+
+    <!-- ECG highlight -->
+    <path d="M18 105
+         H55
+         L68 91
+         L82 118
+         L96 69
+         L110 112
+         L124 96
+         H166" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"></path>
+
+    <!-- Orbiting healthcare swoosh -->
+    <path d="M8 116
+         C-16 136 8 166 57 166
+         C106 166 150 145 181 123
+         C145 153 101 180 48 180
+         C0 180 -25 151 8 116 Z" fill="#8bd450"></path>
+
+    <!-- Pin bottom point -->
+    <path d="M70 143
+         L92 178
+         L114 143
+         L92 153 Z" fill="#0d9488"></path>
+
+    <!-- Small base -->
+    <ellipse cx="92" cy="188" rx="43" ry="7" fill="#8bdde0"></ellipse>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="220" y="125" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800" letter-spacing="-2">
+    <tspan fill="#0b1e3d">Med</tspan><tspan fill="#0d9488">Point</tspan>
+  </text>
+
+  <!-- Optional tagline -->
+  <text x="224" y="157" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" letter-spacing="3" fill="#0d9488">
+    HEALTHCARE APPOINTMENTS
+  </text>
+</svg>

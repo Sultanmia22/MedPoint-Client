@@ -1,266 +1,61 @@
-/* ==========================================
-   MedPoint Design System — Global Tokens (v2)
-   Dark & Light Mode Support
-   ========================================== */
+@import "tailwindcss";
 
-:root {
-  /* --- Brand Colors --- */
-  --color-primary: #0D9488;
-  --color-primary-light: #F0FDFA;
-  --color-primary-hover: #0B7A70;
+/* কাস্টম ডার্ক মোড ভেরিয়েন্ট */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-accent: #4ADE80;
-  --color-accent-light: #F0FDF4;
-  --color-accent-hover: #22C55E;
+/* ===== THEME CONFIGURATION ===== */
+@theme {
+  /* Brand */
+  --color-primary: #0d9488;
+  --color-primary-hover: #0b7a70;
+  --color-accent: #4ade80;
+  --color-navy: #0b1e3d;
 
-  --color-navy: #0B1E3D;
-  --color-navy-light: #16294A;
-
-  --color-white: #FFFFFF;
-  --color-bg-light: #F8FAFC;
-
-  /* --- Light Mode (Default) --- */
-  --color-bg: #FFFFFF;
-  --color-bg-secondary: #F8FAFC;
-  --color-bg-tertiary: #F1F5F9;
-
-  --color-text-heading: #0B1E3D;
+  /* Text */
+  --color-text-heading: #0b1e3d;
   --color-text-body: #475569;
-  --color-text-muted: #94A3B8;
-  --color-text-on-dark: #E2E8F0;
-  --color-text-white: #FFFFFF;
+  --color-text-muted: #94a3b8;
 
-  --color-border: #E2E8F0;
-  --color-border-dark: rgba(11, 30, 61, 0.1);
+  /* Background */
+  --color-bg: #ffffff;
+  --color-bg-light: #f8fafc;
+  --color-border: #e2e8f0;
 
-  /* --- Status Colors --- */
-  --color-success: #4ADE80;
-  --color-warning: #FBBF24;
-  --color-error: #EF4444;
-  --color-pending: #94A3B8;
+  /* Font (Tailwind-এ 'font-sans' ক্লাস পাওয়ার জন্য --font-sans নাম দেওয়া হয়েছে) */
+  --font-sans: "IBM Plex Sans", sans-serif;
 
-  /* --- Typography --- */
-  --font-family-body: var(--font-inter), sans-serif;
-  --font-family-heading: var(--font-lora), serif;
-  --font-family-mono: var(--font-fira-code), monospace;
-
-  --font-size-h1: 40px;
-  --font-size-h2: 32px;
-  --font-size-h3: 24px;
-  --font-size-h4: 20px;
-  --font-size-body-lg: 18px;
-  --font-size-body: 16px;
-  --font-size-body-sm: 14px;
-  --font-size-caption: 12px;
-
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  --line-height-heading: 1.2;
-  --line-height-body: 1.5;
-
-  /* --- Border Radius --- */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
-
-  /* --- Spacing (Base-8 rhythm) --- */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  --space-section: 80px;
-
-  /* --- Shadows --- */
-  --shadow-none: none;
-  --shadow-sm: 0 1px 3px rgba(11, 30, 61, 0.08);
-  --shadow-md: 0 4px 12px rgba(11, 30, 61, 0.10);
-  --shadow-lg: 0 10px 25px rgba(11, 30, 61, 0.15);
+  /* Radius ('rounded' ক্লাস পাওয়ার জন্য) */
+  --radius: 8px;
 }
 
-/* ========== DARK MODE ========== */
-[data-theme="dark"],
-html.dark,
+/* ===== DARK MODE OVERRIDES ===== */
+/* @theme স্বয়ংক্রিয়ভাবে root-এ ভেরিয়েবলগুলো জেনারেট করে, 
+   তাই ডার্ক মোডের জন্য শুধু .dark ক্লাসে পরিবর্তনগুলো রাখা হলো */
 .dark {
-  /* --- Dark Mode Background --- */
-  --color-bg: #0F172A;           /* Very dark navy */
-  --color-bg-secondary: #1E293B; /* Slightly lighter */
-  --color-bg-tertiary: #334155;  /* Even lighter for cards */
+  --color-text-heading: #f1f5f9;
+  --color-text-body: #cbd5e1;
+  --color-text-muted: #94a3b8;
 
-  /* --- Dark Mode Text --- */
-  --color-text-heading: #F1F5F9;
-  --color-text-body: #CBD5E1;
-  --color-text-muted: #94A3B8;
-  --color-text-on-dark: #E2E8F0;
-  --color-text-white: #FFFFFF;
-
-  /* --- Dark Mode Borders --- */
+  --color-bg: #0b1e3d;
+  --color-bg-light: #16294a;
   --color-border: #334155;
-  --color-border-dark: rgba(255, 255, 255, 0.1);
 
-  /* --- Dark Mode Shadows --- */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-
-  /* --- Keep Brand Colors Same --- */
-  --color-primary: #14B8A6;       /* Slightly brighter teal for dark */
-  --color-primary-light: #0D4A3F; /* Dark teal tint */
-  --color-primary-hover: #0D9488;
-
-  --color-accent: #4ADE80;
-  --color-accent-light: #15803D;
-  --color-accent-hover: #22C55E;
-
-  --color-white: #FFFFFF;
-  --color-bg-light: #1E293B;
+  --color-primary: #14b8a6;
+  --color-primary-hover: #0d9488;
 }
 
-/* ========== BASE STYLES ========== */
-* {
-  box-sizing: border-box;
-}
+/* ===== BASE STYLES ===== */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text-body);
+    background-color: var(--color-bg);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: light dark;
-}
-
-body {
-  font-family: var(--font-family-body);
-  color: var(--color-text-body);
-  background-color: var(--color-bg);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* ========== HEADING STYLES ========== */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-heading);
-  color: var(--color-text-heading);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-heading);
-}
-
-h1 {
-  font-size: var(--font-size-h1);
-}
-
-h2 {
-  font-size: var(--font-size-h2);
-}
-
-h3 {
-  font-size: var(--font-size-h3);
-}
-
-h4 {
-  font-size: var(--font-size-h4);
-}
-
-/* ========== TEXT ELEMENTS ========== */
-p, label, span {
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-regular);
-  color: var(--color-text-body);
-}
-
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--color-primary-hover);
-}
-
-/* ========== BUTTON STYLES ========== */
-button,
-input[type="button"],
-input[type="submit"] {
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-/* ========== INPUT STYLES ========== */
-input,
-textarea,
-select {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-body);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-sm) var(--space-md);
-  font-family: var(--font-family-body);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  background-color: var(--color-bg);
-}
-
-/* ========== CODE BLOCKS ========== */
-code, pre {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-body-sm);
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-body);
-  padding: var(--space-sm);
-  border-radius: var(--radius-sm);
-}
-
-pre {
-  overflow-x: auto;
-  padding: var(--space-md);
-}
-
-/* ========== CARDS & CONTAINERS ========== */
-.card,
-.container {
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-md);
-  box-shadow: var(--shadow-sm);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
-}
-
-/* ========== UTILITY CLASSES ========== */
-.bg-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-white);
-}
-
-.bg-accent {
-  background-color: var(--color-accent);
-  color: var(--color-text-white);
-}
-
-.text-muted {
-  color: var(--color-text-muted);
-}
-
-.text-heading {
-  color: var(--color-text-heading);
-}
-
-.border {
-  border-color: var(--color-border);
+  h1, h2, h3, h4 {
+    font-family: var(--font-sans);
+    color: var(--color-text-heading);
+    font-weight: 700;
+  }
 }
