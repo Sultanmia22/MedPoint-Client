@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* কাস্টম ডার্ক মোড ভেরিয়েন্ট */
-@custom-variant dark (&:where(.dark, .dark *));
-
 /* ===== THEME CONFIGURATION ===== */
 @theme {
   /* Brand */
@@ -29,14 +26,15 @@
 }
 
 /* ===== DARK MODE OVERRIDES ===== */
-/* @theme স্বয়ংক্রিয়ভাবে root-এ ভেরিয়েবলগুলো জেনারেট করে, 
-   তাই ডার্ক মোডের জন্য শুধু .dark ক্লাসে পরিবর্তনগুলো রাখা হলো */
-.dark {
+
+/* globals.css */
+[data-theme="dark"] {
   --color-text-heading: #f1f5f9;
   --color-text-body: #cbd5e1;
   --color-text-muted: #94a3b8;
+  --color-navy: #0b1e3d;
 
-  --color-bg: #0b1e3d;
+  --color-bg: #111827;
   --color-bg-light: #16294a;
   --color-border: #334155;
 
@@ -59,3 +57,5 @@
     font-weight: 700;
   }
 }
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

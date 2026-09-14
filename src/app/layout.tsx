@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/layouts/Navbar/Navbar";
+import Container from "@/Components/common/Container/Container";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,14 +24,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-    data-theme="light"
+      data-theme="dark"
       lang="en"
       className={`${inter.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
-        {children}
-        </body>
+        <main>
+          <Container>{children}</Container>
+        </main>
+      </body>
     </html>
   );
 }

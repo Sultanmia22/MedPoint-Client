@@ -12,7 +12,7 @@ const Logo = () => {
         </div>
         <div className="flex flex-col justify-center">
           <p className="font-bold text-sm sm:text-base md:text-lg leading-tight">
-            <span className="text-navy">Med</span>
+            <span className="text-heading">Med</span>
             <span className="text-primary">Point</span>
           </p>
           <p className="text-xs text-gray-500">CARE ACCESS</p>

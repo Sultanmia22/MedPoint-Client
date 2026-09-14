@@ -1,33 +1,34 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Logo from "@/Components/common/Logo/Logo";
-import HumburgerButton from "./MobileMenu/MobileHumburgerButton";
-import MobileDrower from "./MobileMenu/MobileDrower";
+import HumburgerButton from "./MobileNav/HamburgerButton";
+import MobileDrower from "./MobileNav/MobileDrawer";
 import ProfileAndAuth from "./Auth/ProfileAndAuth";
+import Container from "@/Components/common/Container/Container";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
   return (
     <>
-      <div className="bg-white shadow-md px-4 py-2">
+      <div className="bg-bg shadow-md sticky top-0 z-40">
         <header>
-          <nav className="flex justify-between items-center">
+          <Container>
+          <nav className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <section>
+            <section className="flex items-center">
               <Logo />
             </section>
 
+            {/* Desktop NavMenu */}
+
             {/* Right Section */}
-            <section className="flex items-center gap-2">
-              <div>
-                <ProfileAndAuth />
-              </div>
-              <div>
-                <HumburgerButton isOpen={drawerOpen} onClick={() => setDrawerOpen(!drawerOpen)} />
-              </div>
+            <section className="flex items-center gap-3">
+              <ProfileAndAuth />
+              <HumburgerButton isOpen={drawerOpen} onClick={() => setDrawerOpen(!drawerOpen)} />
             </section>
           </nav>
+          </Container>
         </header>
       </div>
 
