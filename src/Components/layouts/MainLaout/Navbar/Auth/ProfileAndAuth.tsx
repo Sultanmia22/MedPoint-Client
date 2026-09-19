@@ -1,7 +1,7 @@
 "use client";
-import { Link, User } from "lucide-react";
+import {  User } from "lucide-react";
 import React, { useState } from "react";
-
+import Link from "next/link";
 const ProfileAndAuth = () => {
   const [login, setLogin] = useState<boolean>(false);
 
@@ -20,9 +20,12 @@ const ProfileAndAuth = () => {
 
   return (
     <div className="flex flex-col sm:flex-row items-center gap-2">
-      <button className="bg-primary text-white text-sm px-4 py-1.5 rounded-md hover:bg-primary-hover transition-colors">
-        Login
-      </button>
+     <Link 
+  href="/login"
+  className="bg-primary text-white text-sm px-4 py-1.5 rounded-md hover:bg-primary-hover transition-colors inline-block text-center"
+>
+  Login
+</Link>
     </div>
   );
 };

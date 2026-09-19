@@ -1,25 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { X, Home, Calendar, Stethoscope, Phone, HelpCircle, User } from "lucide-react";
+import { X, User } from "lucide-react";
+import { getNavItemsByRole} from "@/config/navItems/navItems";
+import type { UserRole } from "@/lib/types/User.Interface";
 
 interface MobileDrawerProps {
   open: boolean;
   onClose: () => void;
+  role?: UserRole;
+  onLogout?: () => void;
 }
 
-const NAV_ITEMS = [
-  { label: "Home", icon: Home, href: "/" },
-  { label: "Appointments", icon: Calendar, href: "/appointments" },
-  { label: "Find Doctor", icon: Stethoscope, href: "/doctors" },
-  { label: "Contact", icon: Phone, href: "/contact" },
-  { label: "Support", icon: HelpCircle, href: "/support" },
-] as const;
+const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProps) => {
+  const navItems = getNavItemsByRole(role);
 
-const MobileDrawer = ({ open, onClose }: MobileDrawerProps) => {
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // role না থাকা মানেই login করা নেই — এখন isLoggedIn আলাদা state না রেখে role থেকেই বের করা হচ্ছে
+  const isLoggedIn = role !== null;
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -82,7 +80,7 @@ const MobileDrawer = ({ open, onClose }: MobileDrawerProps) => {
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto py-4">
           <ul className="space-y-1 px-3">
-            {NAV_ITEMS.map(({ label, icon: Icon, href }) => (
+            {navItems.map(({ label, icon: Icon, href }) => (
               <li key={label}>
                 <Link
                   href={href}
@@ -102,7 +100,7 @@ const MobileDrawer = ({ open, onClose }: MobileDrawerProps) => {
           {isLoggedIn ? (
             <button
               type="button"
-              onClick={() => setIsLoggedIn(false)}
+              onClick={onLogout}
               className="w-full rounded-md border border-primary py-2 text-center text-sm font-medium text-primary transition-colors hover:bg-primary/5"
             >
               Logout

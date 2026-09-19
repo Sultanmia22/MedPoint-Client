@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/Components/layouts/Navbar/Navbar";
-import Container from "@/Components/common/Container/Container";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,12 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main>
-          <Container>{children}</Container>
-        </main>
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
