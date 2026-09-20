@@ -2,14 +2,22 @@ import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
 import Image from "next/image";
 import React from "react";
-
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 const LoginHero = () => {
   return (
 
     <div className="min-h-screen bg-secondary w-full px-4 sm:px-6 py-6">
     
       <div className="mx-auto flex flex-col h-full justify-between items-center max-w-2xl">
-        <div className="w-full flex justify-start">
+        <div className="w-full flex justify-start flex-col gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 rounded-lg bg-secondary-content/10 px-3 py-2 text-secondary-content/70 transition-colors hover:bg-secondary-content/15"
+          >
+            <ArrowLeft size={16} />
+            <span className="text-xs">Back to Home</span>
+          </Link>
           <Logo onSecondary />
         </div>
 
