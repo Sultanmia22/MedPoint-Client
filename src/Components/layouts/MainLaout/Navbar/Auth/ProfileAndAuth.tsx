@@ -11,7 +11,7 @@ const ProfileAndAuth = () => {
         <div className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 bg-primary/10 rounded-full">
           <User className="w-4 h-4 md:w-5 md:h-5 text-primary" />
         </div>
-        <span className="hidden sm:block text-sm md:text-base font-medium text-text-heading">
+        <span className="hidden sm:block text-sm md:text-base font-medium text-base-content">
           User Name
         </span>
       </div>
@@ -22,7 +22,7 @@ const ProfileAndAuth = () => {
     <div className="flex flex-col sm:flex-row items-center gap-2">
      <Link 
   href="/login"
-  className="bg-primary text-white text-sm px-4 py-1.5 rounded-md hover:bg-primary-hover transition-colors inline-block text-center"
+  className="bg-primary text-base-content text-sm px-4 py-1.5 rounded-md hover:bg-primary/90 transition-colors inline-block text-center"
 >
   Login
 </Link>

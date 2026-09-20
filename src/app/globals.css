@@ -1,61 +1,108 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-/* ===== THEME CONFIGURATION ===== */
-@theme {
-  /* Brand */
+/* ===== LIGHT THEME (DaisyUI) ===== */
+@plugin "daisyui/theme" {
+  name: "medpoint";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+
   --color-primary: #0d9488;
-  --color-primary-hover: #0b7a70;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #0b1e3d;
+  --color-secondary-content: #ffffff;
+
   --color-accent: #4ade80;
-  --color-navy: #0b1e3d;
+  --color-accent-content: #0b1e3d;
 
-  /* Text */
-  --color-text-heading: #0b1e3d;
-  --color-text-body: #475569;
-  --color-text-muted: #94a3b8;
+  --color-neutral: #0b1e3d;
+  --color-neutral-content: #ffffff;
 
-  /* Background */
-  --color-bg: #ffffff;
-  --color-bg-light: #f8fafc;
-  --color-border: #e2e8f0;
+  --color-base-100: #ffffff;
+  --color-base-200: #f8fafc;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #0b1e3d;
 
-  /* Font (Tailwind-এ 'font-sans' ক্লাস পাওয়ার জন্য --font-sans নাম দেওয়া হয়েছে) */
-  --font-sans: "IBM Plex Sans", sans-serif;
+  --color-info: #3b82f6;
+  --color-info-content: #ffffff;
+  --color-success: #22c55e;
+  --color-success-content: #052e16;
+  --color-warning: #f59e0b;
+  --color-warning-content: #451a03;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
 
-  /* Radius ('rounded' ক্লাস পাওয়ার জন্য) */
-  --radius: 8px;
+  --radius-selector: 8px;
+  --radius-field: 8px;
+  --radius-box: 8px;
+  --border: 1px;
 }
 
-/* ===== DARK MODE OVERRIDES ===== */
-
-/* globals.css */
-[data-theme="dark"] {
-  --color-text-heading: #f1f5f9;
-  --color-text-body: #cbd5e1;
-  --color-text-muted: #94a3b8;
-  --color-navy: #0b1e3d;
-
-  --color-bg: #111827;
-  --color-bg-light: #16294a;
-  --color-border: #334155;
+/* ===== DARK THEME (DaisyUI) ===== */
+@plugin "daisyui/theme" {
+  name: "medpoint-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
 
   --color-primary: #14b8a6;
-  --color-primary-hover: #0d9488;
+  --color-primary-content: #052e2b;
+
+  --color-secondary: #cbd5e1;
+  --color-secondary-content: #0b1e3d;
+
+  --color-accent: #4ade80;
+  --color-accent-content: #052e16;
+
+  --color-neutral: #16294a;
+  --color-neutral-content: #f1f5f9;
+
+  --color-base-100: #111827;
+  --color-base-200: #16294a;
+  --color-base-300: #334155;
+  --color-base-content: #f1f5f9;
+
+  --color-info: #3b82f6;
+  --color-info-content: #ffffff;
+  --color-success: #22c55e;
+  --color-success-content: #052e16;
+  --color-warning: #f59e0b;
+  --color-warning-content: #451a03;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 8px;
+  --radius-field: 8px;
+  --radius-box: 8px;
+  --border: 1px;
 }
 
 /* ===== BASE STYLES ===== */
 @layer base {
-  body {
-    font-family: var(--font-sans);
-    color: var(--color-text-body);
-    background-color: var(--color-bg);
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: var(--font-sans);
-    color: var(--color-text-heading);
+  h1 {
+    font-family: var(--font-lora), serif;
     font-weight: 700;
+    font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
+    line-height: 1.2;
+  }
+  h2 {
+    font-family: var(--font-lora), serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+    line-height: 1.3;
+  }
+  h3 {
+    font-family: var(--font-lora), serif;
+    font-weight: 700;
+    font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+    line-height: 1.4;
+  }
+  h4 {
+    font-family: var(--font-lora), serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+    line-height: 1.4;
   }
 }
-
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

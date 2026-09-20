@@ -24,7 +24,7 @@ const DesktopNavMenu = ({ role = null }: DesktopMenuProps) => {
             key={label}
             href={href}
             className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
-              isActive ? "text-primary" : "text-text-body hover:text-primary"
+              isActive ? "text-primary" : "text-base-content hover:text-primary"
             }`}
           >
             <Icon className="h-4 w-4" />
