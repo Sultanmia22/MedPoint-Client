@@ -1,19 +1,20 @@
 import LoginForm from '@/Components/auth/Login/LoginForm'
+import LoginHero from '@/Components/auth/Login/LoginHero'
 import React from 'react'
 
 const LoginPage = () => {
   return (
-    <div className='flex w-full min-h-screen'>
+    <div className='flex w-full min-h-screen bg-base-100'>
         {/* Login Hero Start */}
-        <section className='hidden md:flex w-1/2  border-2 border-accent'>
-            Hero Image
+        <section className='hidden md:flex w-1/2 '>
+            <LoginHero />
         </section>
         {/* Login Hero End */}
 
         {/* ========xxx======== */}
 
         {/* Login Form Start */}
-        <section className=' w-full md:w-1/2'>
+        <section className='w-full md:w-1/2 bg-base-200'>
             <LoginForm />
         </section>
         {/* Login Form End */}

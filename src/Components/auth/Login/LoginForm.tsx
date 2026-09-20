@@ -1,6 +1,7 @@
 "use client";
 
 import Logo from "@/Components/common/Logo/Logo";
+import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
 import { Clock, MoveRight, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -121,7 +122,7 @@ export default function LoginForm() {
 
           <div className="  flex flex-col md:hidden space-y-3">
             <div className="w-full h-px bg-gray-300"></div>
-            <div className="flex justify-between items-center gap-3 ">
+            {/* <div className="flex justify-between items-center gap-3 ">
               <button className="flex items-center gap-0.5  text-primary">
                 {" "}
                 <span>
@@ -153,7 +154,8 @@ export default function LoginForm() {
                   24/7 Support
                 </span>{" "}
               </button>
-            </div>
+            </div> */}
+            <TrustBadges />
           </div>
         </div>
       </main>

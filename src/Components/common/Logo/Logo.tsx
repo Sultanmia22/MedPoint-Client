@@ -2,7 +2,11 @@ import { Hospital } from "lucide-react";
 
 import React from "react";
 
-const Logo = () => {
+type LogoProps = {
+  onSecondary?: boolean;
+};
+
+const Logo = ({ onSecondary = false }: LogoProps) => {
   return (
     <div>
       {/* Logo Image */}
@@ -12,10 +16,14 @@ const Logo = () => {
         </div>
         <div className="flex flex-col justify-center">
           <p className="font-bold text-sm sm:text-base md:text-lg leading-tight">
-            <span className="text-base-content">Med</span>
+            <span className={onSecondary ? "text-secondary-content" : "text-base-content"}>
+              Med
+            </span>
             <span className="text-primary">Point</span>
           </p>
-          <p className="text-xs text-base-content/60">CARE ACCESS</p>
+          <p className={onSecondary ? "text-xs text-secondary-content/70" : "text-xs text-base-content/60"}>
+            CARE ACCESS
+          </p>
         </div>
       </div>
     </div>
