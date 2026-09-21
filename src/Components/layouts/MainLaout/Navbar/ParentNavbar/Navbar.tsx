@@ -14,9 +14,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-base-100 shadow-md sticky top-0 z-40">
+      <div className="sticky md:top-4 z-40 md:mt-4 ">
         <header>
-          <Container>
+          <Container className="bg-base-100 shadow-md md:rounded-lg">
             <nav className="flex h-16 items-center justify-between">
               {/* Logo Start */}
               <section className="flex items-center">

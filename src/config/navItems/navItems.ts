@@ -21,8 +21,7 @@ export type NavItem = {
   icon: React.ComponentType<{ className?: string }>;
 };
 
-
-// ========== COMMON NAV ITEMS (সব জায়গায় থাকবে) ==========
+// ========== COMMON NAV ITEMS ==========
 export const commonNavItems: NavItem[] = [
   { label: "Home", href: "/", icon: Home },
   { label: "About Us", href: "/about", icon: Info },
@@ -30,7 +29,7 @@ export const commonNavItems: NavItem[] = [
   { label: "Contact", href: "/contact", icon: Mail },
 ];
 
-// ========== PUBLIC NAV ITEMS (Login এর আগে) ==========
+// ========== PUBLIC NAV ITEMS ==========
 export const publicNavItems: NavItem[] = [
   { label: "Find Doctors", href: "/doctors", icon: Stethoscope },
   { label: "Specialties", href: "/specialties", icon: Layers },
@@ -56,32 +55,52 @@ export const adminNavItems: NavItem[] = [
 
 // ========== HELPER FUNCTION ==========
 
-/**
- * Role অনুযায়ী Nav Items ফেরত দেয়
- */
 export const getNavItemsByRole = (role: UserRole): NavItem[] => {
+  const [home, about, howItWorks, contact] = commonNavItems;
+
   switch (role) {
     case "patient":
-      return [...commonNavItems, ...patientNavItems];
+      return [
+        home,
+        ...patientNavItems,
+        about,
+        howItWorks,
+        contact,
+      ];
+
     case "doctor":
-      return [...commonNavItems, ...doctorNavItems];
+      return [
+        home,
+        ...doctorNavItems,
+        about,
+        howItWorks,
+        contact,
+      ];
+
     case "admin":
-      return [...commonNavItems, ...adminNavItems];
+      return [
+        home,
+        ...adminNavItems,
+        about,
+        howItWorks,
+        contact,
+      ];
+
     default:
-      return [...commonNavItems, ...publicNavItems];
+      return [
+        home,
+        ...publicNavItems,
+        about,
+        howItWorks,
+        contact,
+      ];
   }
 };
 
-/**
- * শুধু common items
- */
 export const getCommonNavItems = (): NavItem[] => {
   return commonNavItems;
 };
 
-/**
- * শুধু role-specific items
- */
 export const getRoleSpecificNavItems = (role: UserRole): NavItem[] => {
   switch (role) {
     case "patient":

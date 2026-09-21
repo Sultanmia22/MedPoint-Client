@@ -2,22 +2,13 @@
 
 import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
-import { Clock, MoveRight, ShieldCheck } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("sarah.mitchell@example.com");
-  const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(true);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: hook up your auth logic here
-  };
 
   return (
     <div className=" min-h-screen w-full flex justify-center items-center ">
