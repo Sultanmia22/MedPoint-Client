@@ -1,8 +1,8 @@
-import { Clock, ShieldCheck } from "lucide-react";
+import { Clock, FolderLock, ShieldCheck } from "lucide-react";
 
 const items = [
   { label: "Verified Doctors", icon: ShieldCheck },
-  { label: "Secure & Private", icon: ShieldCheck },
+  { label: "Secure & Private", icon: FolderLock },
   { label: "24/7 Support", icon: Clock },
 ];
 
