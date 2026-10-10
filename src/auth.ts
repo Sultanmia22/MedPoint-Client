@@ -5,7 +5,7 @@ import axios from "axios";
 interface LoginResponse {
   success: boolean;
   data: {
-    token: string;
+    accessToken: string;
     user: {
       id: string;
       name: string;
@@ -31,27 +31,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         try {
           const res = await axios.post<LoginResponse>(
-            `${process.env.BACKEND_URL}/api/v1/auth/login`,
+            `${process.env.BACKEND_URL}/auth/login`,
             {
               email: credentials.email,
               password: credentials.password,
             },
           );
-
           
 
           if (res.status !== 200 || !res.data.success) {
             return null;
           }
 
-          const { token, user } = res.data.data;
+          const { accessToken, user } = res.data.data;
+
+          console.log("User",user)
 
           return {
             id: user.id,
             name: user.name,
             email: user.email,
             role: user.role,
-            accessToken: token,
+            accessToken: accessToken,
           };
         } catch (error) {
           if (error instanceof Error) {

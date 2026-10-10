@@ -1,36 +1,46 @@
 "use client";
 
-import { signIn } from "@/auth";
 import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
 import { loginSchema, type LoginFormData } from "@/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
-
 export default function LoginForm() {
-
-   const {
+  const router = useRouter();
+  const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema)
-  })
+    resolver: zodResolver(loginSchema),
+  });
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
-    const result = await signIn("credentials",{
+    const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
       redirect: false,
     });
 
-    console.log("result",result)
-  }
+    // console.log("result",result)
+
+    if (result?.error) {
+      toast.error("Email or password is incorrect");
+      return;
+    }
+
+    toast.success("Login successful");
+    router.push("/");
+    router.refresh();
+  };
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
@@ -82,12 +92,12 @@ export default function LoginForm() {
                 Password
               </label>
               <input
-               {...register("password")}
+                {...register("password")}
                 type="password"
                 className="input w-full"
                 placeholder="••••••••••••••••"
               />
-               {errors.password && (
+              {errors.password && (
                 <p className="text-red-500 text-sm font-medium">
                   {errors.password.message}
                 </p>
