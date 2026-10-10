@@ -1,5 +1,5 @@
-import LoginForm from '@/Components/auth/Login/LoginForm'
-import LoginHero from '@/Components/auth/Login/LoginHero'
+import LoginForm from '@/Components/auth/signin/LoginForm'
+import LoginHero from '@/Components/auth/signin/LoginHero'
 import React from 'react'
 
 const LoginPage = () => {

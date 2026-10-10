@@ -85,7 +85,7 @@ export default function RegisterForm() {
             <p className="text-sm text-base-content/60/60 text-center">
               Already have an account?{" "}
               <span className="text-primary font-semibold">
-                <Link href={`/login`}>Login</Link>
+                <Link href={`/signin`}>SignIn</Link>
               </span>
             </p>
           </div>

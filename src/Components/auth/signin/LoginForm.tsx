@@ -1,12 +1,37 @@
 "use client";
 
+import { signIn } from "@/auth";
 import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
+import { loginSchema, type LoginFormData } from "@/schemas/authSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 
+
 export default function LoginForm() {
+
+   const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema)
+  })
+
+  const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
+    const result = await signIn("credentials",{
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
+
+    console.log("result",result)
+  }
+
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <main className="w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-5 md:px-4 lg:px-4">
@@ -30,7 +55,7 @@ export default function LoginForm() {
         </header>
         {/* Header Section End */}
 
-        <form className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
           <div className="space-y-6">
             {/* Email Section Start */}
             <div className="space-y-3">
@@ -38,10 +63,16 @@ export default function LoginForm() {
                 Email Address
               </label>
               <input
+                {...register("email")}
                 type="email"
                 className="input w-full focus:border-spacing-x-1.5 focus:border-primary outline-0 focus:shadow-sm"
                 placeholder="example@gmail.com"
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm font-medium">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
             {/* Email Section End */}
 
@@ -51,10 +82,16 @@ export default function LoginForm() {
                 Password
               </label>
               <input
+               {...register("password")}
                 type="password"
                 className="input w-full"
                 placeholder="••••••••••••••••"
               />
+               {errors.password && (
+                <p className="text-red-500 text-sm font-medium">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
             {/* Password Section End */}
           </div>

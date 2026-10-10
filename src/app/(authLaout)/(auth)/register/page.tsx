@@ -15,10 +15,9 @@ const RegisterPage = () => {
 
         {/* Register Form Start */}
         <section className='w-full md:w-1/2 h-full overflow-y-auto bg-base-200 py-10'>
-           <RegisterForm />
+            <RegisterForm />
         </section>
         {/* Login Form End */}
-
     </div>
   )
 }
