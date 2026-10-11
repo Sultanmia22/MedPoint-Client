@@ -14,7 +14,3 @@ export interface LoginResponse {
 export interface RegisterResponse {
     userId: string
 }
-
-export interface IRegisterFormData {
-    
-}
