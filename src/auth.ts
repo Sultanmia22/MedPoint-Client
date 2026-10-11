@@ -1,19 +1,9 @@
 import NextAuth, { type User } from "next-auth";
 import credentials from "next-auth/providers/credentials";
 import axios from "axios";
+import type { LoginResponse } from "./lib/types/auth/auth.interface";
 
-interface LoginResponse {
-  success: boolean;
-  data: {
-    accessToken: string;
-    user: {
-      id: string;
-      name: string;
-      email: string;
-      role: string;
-    };
-  };
-}
+
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [

@@ -2,7 +2,7 @@
 
 import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
-import { loginSchema, type LoginFormData } from "@/schemas/authSchema";
+import { loginSchema, type LoginFormData } from "@/schemas/authSchemas/signinSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
 import { signIn } from "next-auth/react";
@@ -165,7 +165,7 @@ export default function LoginForm() {
           {/* Register Section Start */}
           <div className="my-6">
             <p className="text-sm text-base-content/60 text-center">
-              Don't Have an account?{" "}
+               Don&apos;t Have an account?{" "}
               <span className="text-primary font-semibold">
                 <Link href="/register">Sign Up</Link>
               </span>

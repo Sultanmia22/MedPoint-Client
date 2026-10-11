@@ -1,8 +1,14 @@
+import { auth } from '@/auth'
 import LoginForm from '@/Components/auth/signin/LoginForm'
 import LoginHero from '@/Components/auth/signin/LoginHero'
 import React from 'react'
 
-const LoginPage = () => {
+const LoginPage = async () => {
+
+  const session = await auth()
+
+  console.log("session",session)
+
   return (
     <div className='flex w-full min-h-screen bg-base-100'>
         {/* Login Hero Start */}
