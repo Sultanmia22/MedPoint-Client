@@ -1,4 +1,11 @@
-import { AxiosError } from 'axios';
+interface AxiosError<T = unknown> {
+  isAxiosError: boolean;
+  response?: {
+    data: T;
+    status: number;
+  };
+  message: string;
+}
 
 interface ApiErrorResponse {
   message: string;
@@ -7,14 +14,11 @@ interface ApiErrorResponse {
 }
 
 export const handleApiError = (error: unknown): string => {
-
-  if (error instanceof AxiosError) {
-    const apiError = error.response?.data as ApiErrorResponse | undefined;
-    
-    return apiError?.message || "Something went wrong";
+  if (error && typeof error === "object" && "isAxiosError" in error) {
+    const axiosError = error as AxiosError<ApiErrorResponse>;
+    return axiosError.response?.data?.message || "Something went wrong";
   } else if (error instanceof Error) {
     return error.message;
   }
-  
   return "An unexpected error occurred";
 };

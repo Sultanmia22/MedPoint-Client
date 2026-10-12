@@ -31,7 +31,7 @@ export default function DoctorRegisterForm() {
     },
   });
 
-  // ✅ File handle করো সঠিকভাবে
+  //  File handle করো সঠিকভাবে
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -42,7 +42,7 @@ export default function DoctorRegisterForm() {
       };
       reader.readAsDataURL(file);
 
-      // ✅ Form value-তে file set করো (base64 string হিসেবে)
+      // Form value-তে file set করো (base64 string হিসেবে)
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
         setValue("licenseDocumentUrl", fileReader.result as string);
