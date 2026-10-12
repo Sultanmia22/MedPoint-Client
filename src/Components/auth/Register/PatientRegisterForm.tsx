@@ -23,7 +23,7 @@ export default function PatientRegisterForm() {
     try {
       const result = await registerUser(data);
       
-      console.log("Result",result)
+      // console.log("Result",result)
       if (result.success) {
         alert("Registration successful! Please login.");
       } else {

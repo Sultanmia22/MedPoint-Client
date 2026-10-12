@@ -6,7 +6,7 @@ export const registerUser = async (data:PatientRegisterFormData | DoctorRegister
 
     const {confirmPassword, agreeToTerms,...formData} = data
 
-    const response = await axios.post(`${process.env.BACKEND_URL}/auth/register`,formData)
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`,formData)
 
     return response.data;
 

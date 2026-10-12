@@ -36,7 +36,7 @@ export const doctorRegisterSchema = z
     consultationFee: z.number().min(0, "Fee cannot be negative"),
     clinicName: z.string().min(2, "Clinic name is required"),
     city: z.string().min(2, "City is required"),
-    licenseDocument: z.string().optional(), // File URL
+    licenseDocumentUrl: z.string().optional(), // File URL
     password: z
       .string()
       .min(6, "Password must be at least 6 characters")
