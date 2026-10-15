@@ -19,13 +19,13 @@ export default function TrustBadges({ variant = "default" }: Props) {
         <div
           key={label}
           className={`flex items-center gap-1.5 rounded-lg px-3 py-2 ${
-            onSec ? "bg-secondary-content/10" : "bg-secondary/10"
+            onSec ? "bg-secondary-content/10 " : "bg-secondary/10 "
           }`}
         >
           <Icon size={18} className="shrink-0 text-accent" />
           <span
             className={`whitespace-nowrap text-xs ${
-              onSec ? "text-secondary-content/70" : "text-base-content/70"
+              onSec ? "text-secondary-content/70 dark:text-base-content" : "text-base-content/70"
             }`}
           >
             {label}

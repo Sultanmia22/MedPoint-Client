@@ -16,12 +16,12 @@ const Logo = ({ onSecondary = false }: LogoProps) => {
         </div>
         <div className="flex flex-col justify-center">
           <p className="font-bold text-sm sm:text-base md:text-lg leading-tight">
-            <span className={onSecondary ? "text-secondary-content" : "text-base-content"}>
+            <span className={onSecondary ? "text-secondary-content dark:text-base-content" : "text-base-content"}>
               Med
             </span>
             <span className="text-primary">Point</span>
           </p>
-          <p className={onSecondary ? "text-xs text-secondary-content/70" : "text-xs text-base-content/60"}>
+          <p className={onSecondary ? "text-xs text-secondary-content/70 dark:text-base-content" : "text-xs text-base-content/60"}>
             CARE ACCESS
           </p>
         </div>

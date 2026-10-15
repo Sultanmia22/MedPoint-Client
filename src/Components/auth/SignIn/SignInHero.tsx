@@ -7,13 +7,13 @@ import { ArrowLeft } from "lucide-react";
 const SignInHero = () => {
   return (
 
-    <div className="min-h-screen bg-secondary w-full px-4 sm:px-6 py-6">
+    <div className="min-h-screen bg-secondary dark:bg-base-100 w-full px-4 sm:px-6 py-6">
     
       <div className="mx-auto flex flex-col h-full justify-between items-center max-w-2xl">
         <div className="w-full flex justify-start flex-col gap-2">
           <Link
             href="/"
-            className="flex items-center gap-1.5 rounded-lg bg-secondary-content/10 px-3 py-2 text-secondary-content/70 transition-colors hover:bg-secondary-content/15"
+            className="flex items-center gap-1.5 rounded-lg bg-secondary-content/10 dark:bg-base-100 px-3 py-2 text-base-content dark:border dark:border-base-accent transition-colors hover:bg-secondary-content/15"
           >
             <ArrowLeft size={16} />
             <span className="text-xs">Back to Home</span>
@@ -31,10 +31,10 @@ const SignInHero = () => {
             className="w-full h-auto object-contain"
             preload
           />
-          <h1 className="text-white text-center text-2xl font-bold">
+          <h1 className="text-base-content text-center text-2xl font-bold">
             Your Health, One Click Away
           </h1>
-          <p className="text-gray-200 text-center text-sm">
+          <p className="text-base-content/70 text-center text-sm">
             Book appointments with 500+ verified doctors across 50+ specialties.
           </p>
         </div>
