@@ -13,7 +13,7 @@ const SignInPage = async () => {
     <div className='flex w-full min-h-screen bg-base-100'>
         {/* Login Hero Start */}
         <section className='hidden md:flex w-1/2 '>
-            <SignInHer />
+            <SignInHero />
         </section>
         {/* Login Hero End */}
 
