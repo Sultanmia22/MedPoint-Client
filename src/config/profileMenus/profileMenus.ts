@@ -68,6 +68,6 @@ export const hasProfileMenu = (role: UserRole): boolean => {
  * Public auth menu (Login/Signup)
  */
 export const getPublicAuthMenu = (): ProfileMenuItem[] => [
-  { label: "Login", href: "/signin" },
-  { label: "Sign Up", href: "/register" },
+  { label: "Login", href: "/sign-in" },
+  { label: "Sign Up", href: "/sign-up" },
 ];

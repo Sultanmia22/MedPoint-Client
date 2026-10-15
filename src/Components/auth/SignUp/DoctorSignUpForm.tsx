@@ -1,4 +1,4 @@
-// src/components/auth/DoctorRegisterForm.tsx
+// src/Components/auth/SignUp/DoctorSignUpForm.tsx
 
 "use client";
 
@@ -15,7 +15,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function DoctorRegisterForm() {
+export default function DoctorSignUpForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const router = useRouter();
 
@@ -31,11 +31,11 @@ export default function DoctorRegisterForm() {
     },
   });
 
-  //  File handle করো সঠিকভাবে
+  //  File handle
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // File reader preview-এর জন্য
+      // File reader preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setFilePreview(reader.result as string);
@@ -53,7 +53,7 @@ export default function DoctorRegisterForm() {
 
   const onSubmit: SubmitHandler<DoctorRegisterFormData> = async (data) => {
     try {
-      console.log("Form Data:", data);
+      // console.log("Form Data:", data);
 
       const result = await registerUser(data);
 

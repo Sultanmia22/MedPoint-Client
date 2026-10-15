@@ -6,12 +6,12 @@ import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import PatientRegisterForm from "./PatientRegisterForm";
-import DoctorRegisterForm from "./DoctorRegisterForm";
+import PatientSignUpForm from "./PatientSignUpForm";
+import DoctorSignUpForm from "./DoctorSignUpForm";
 
 type SignUpCategory = "patient" | "doctor";
 
-export default function RegisterForm() {
+export default function SignUpForm() {
   const [singUpCategory, setSingUpCategory] =
     useState<SignUpCategory>("patient");
 
@@ -56,11 +56,11 @@ export default function RegisterForm() {
         {
             singUpCategory === 'patient' ? 
 
-            <PatientRegisterForm />
+            <PatientSignUpForm />
 
             :
 
-            <DoctorRegisterForm />
+            <DoctorSignUpForm />
         }
 
         <div className="space-y-2">
@@ -85,7 +85,7 @@ export default function RegisterForm() {
             <p className="text-sm text-base-content/60/60 text-center">
               Already have an account?{" "}
               <span className="text-primary font-semibold">
-                <Link href={`/signin`}>SignIn</Link>
+                <Link href="/sign-in">Sign In</Link>
               </span>
             </p>
           </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-const LoginHero = () => {
+const SignInHero = () => {
   return (
 
     <div className="min-h-screen bg-secondary w-full px-4 sm:px-6 py-6">
@@ -48,4 +48,4 @@ const LoginHero = () => {
   );
 };
 
-export default LoginHero;
+export default SignInHero;

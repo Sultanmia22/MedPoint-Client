@@ -21,7 +21,7 @@ const ProfileAndAuth = () => {
   return (
     <div className="flex flex-col sm:flex-row items-center gap-2">
       <Link
-        href="/signin"
+        href="/sign-in"
         className="bg-primary text-white text-sm px-4 py-1.5 rounded-md hover:bg-primary/90 transition-colors inline-block text-center"
       >
         Login

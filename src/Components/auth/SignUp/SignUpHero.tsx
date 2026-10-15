@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-const RegisterHero = () => {
+const SignUpHero = () => {
   return (
 
     <div className="h-full bg-secondary w-full px-4 sm:px-6 py-6 overflow-hidden">
@@ -48,4 +48,4 @@ const RegisterHero = () => {
   );
 };
 
-export default RegisterHero;
+export default SignUpHero;

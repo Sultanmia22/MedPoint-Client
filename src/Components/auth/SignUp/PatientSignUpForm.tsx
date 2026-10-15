@@ -1,4 +1,4 @@
-// src/components/auth/PatientRegisterForm.tsx
+// src/Components/auth/SignUp/PatientSignUpForm.tsx
 "use client";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,8 +9,12 @@ import {
 } from "@/schemas/authSchemas/signupSchema";
 import { registerUser } from "@/services/authService";
 import { handleApiError } from "@/lib/utils/errorHandler";
+import { useRouter } from "next/navigation";
 
-export default function PatientRegisterForm() {
+export default function PatientSignUpForm() {
+
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -26,6 +30,7 @@ export default function PatientRegisterForm() {
       // console.log("Result",result)
       if (result.success) {
         alert("Registration successful! Please login.");
+        router.push('/signin')
       } else {
         alert(result.message);
       }

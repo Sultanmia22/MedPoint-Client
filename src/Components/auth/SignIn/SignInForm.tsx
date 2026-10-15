@@ -12,7 +12,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
-export default function LoginForm() {
+export default function SignInForm() {
   const router = useRouter();
   const {
     register,
@@ -167,7 +167,7 @@ export default function LoginForm() {
             <p className="text-sm text-base-content/60 text-center">
                Don&apos;t Have an account?{" "}
               <span className="text-primary font-semibold">
-                <Link href="/register">Sign Up</Link>
+                <Link href="/sign-up">Sign Up</Link>
               </span>
             </p>
           </div>

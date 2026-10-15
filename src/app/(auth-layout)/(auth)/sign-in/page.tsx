@@ -1,9 +1,9 @@
 import { auth } from '@/auth'
-import LoginForm from '@/Components/auth/signin/LoginForm'
-import LoginHero from '@/Components/auth/signin/LoginHero'
+import SignInForm from "@/Components/auth/SignIn/SignInForm";
+import SignInHero from "@/Components/auth/SignIn/SignInHero";
 import React from 'react'
 
-const LoginPage = async () => {
+const SignInPage = async () => {
 
   const session = await auth()
 
@@ -13,7 +13,7 @@ const LoginPage = async () => {
     <div className='flex w-full min-h-screen bg-base-100'>
         {/* Login Hero Start */}
         <section className='hidden md:flex w-1/2 '>
-            <LoginHero />
+            <SignInHer />
         </section>
         {/* Login Hero End */}
 
@@ -21,7 +21,7 @@ const LoginPage = async () => {
 
         {/* Login Form Start */}
         <section className='w-full md:w-1/2 bg-base-200'>
-            <LoginForm />
+            <SignInForm />
         </section>
         {/* Login Form End */}
 
@@ -29,4 +29,4 @@ const LoginPage = async () => {
   )
 }
 
-export default LoginPage
+export default SignInPage

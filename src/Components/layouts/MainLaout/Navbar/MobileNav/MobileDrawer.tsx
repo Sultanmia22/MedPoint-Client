@@ -116,14 +116,14 @@ const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProp
 
               <div className="flex gap-2">
                 <Link
-                  href="/signin"
+                  href="/sign-in"
                   onClick={onClose}
                   className="flex-1 rounded-md bg-primary py-2 text-center text-sm font-medium text-primary-content transition-colors hover:bg-primary/90"
                 >
                   Login
                 </Link>
                 <Link
-                  href="/register"
+                  href="/sign-up"
                   onClick={onClose}
                   className="flex-1 rounded-md border border-primary py-2 text-center text-sm font-medium text-primary transition-colors hover:bg-primary/5"
                 >
