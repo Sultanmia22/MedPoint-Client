@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react";
 const SignUpHero = () => {
   return (
 
-    <div className="h-full bg-secondary w-full px-4 sm:px-6 py-6 overflow-hidden">
+    <div className="h-full bg-secondary dark:bg-base-100 w-full px-4 sm:px-6 py-6 overflow-hidden">
     
       <div className="mx-auto flex flex-col h-full justify-between items-center max-w-2xl">
         <div className="w-full flex justify-start flex-col gap-2">

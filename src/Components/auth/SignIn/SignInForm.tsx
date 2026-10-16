@@ -30,7 +30,7 @@ export default function SignInForm() {
       redirect: false,
     });
 
-    // console.log("result",result)
+    console.log(" Singin form result",result)
 
     if (result?.error) {
       toast.error("Email or password is incorrect");

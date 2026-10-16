@@ -61,7 +61,7 @@ export default function DoctorSignUpForm() {
         alert(
           "Registration successful! Your account will be reviewed within 24-48 hours.",
         );
-        router.push("/signin");
+        router.push("/sign-in");
       } else {
         alert(result.message);
       }
