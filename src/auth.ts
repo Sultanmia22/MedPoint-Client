@@ -3,7 +3,25 @@ import credentials from "next-auth/providers/credentials";
 import axios from "axios";
 import type { LoginResponse } from "./lib/types/auth/auth.interface";
 
+const backendUrl = process.env.BACKEND_URL?.replace(/\/$/, "");
 
+if (!backendUrl) {
+  throw new Error("BACKEND_URL is not configured");
+}
+
+const getRefreshToken = (setCookie: string[] | undefined): string => {
+  const refreshCookie = setCookie?.find((cookie) =>
+    cookie.startsWith("refreshToken="),
+  );
+
+  if (!refreshCookie) {
+    throw new Error(
+      "Backend login/refresh response did not include refreshToken",
+    );
+  }
+
+  return refreshCookie.split(";")[0].slice("refreshToken=".length);
+};
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -15,41 +33,37 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
 
       authorize: async (credentials): Promise<User | null> => {
-        if (!credentials.email || !credentials?.password) {
+        if (!credentials.email || !credentials.password) {
           return null;
         }
 
         try {
-          const res = await axios.post<LoginResponse>(
-            `${process.env.BACKEND_URL}/auth/login`,
+          const response = await axios.post<LoginResponse>(
+            `${backendUrl}/auth/login`,
             {
               email: credentials.email,
               password: credentials.password,
             },
           );
-          
 
-          if (res.status !== 200 || !res.data.success) {
+          if (!response.data.success) {
             return null;
           }
 
-          const { accessToken, user } = res.data.data;
-
-          console.log("User",user)
+          const { accessToken, user } = response.data.data;
+          const refreshToken = getRefreshToken(response.headers["set-cookie"]);
 
           return {
             id: user.id,
             name: user.name,
             email: user.email,
             role: user.role,
-            accessToken: accessToken,
+            accessToken,
+            refreshToken,
+            accessTokenExpires: Date.now() + 60 * 60 * 1000,
           };
         } catch (error) {
-          if (error instanceof Error) {
-            console.error("Authentication error:", error.message);
-          } else {
-            console.error("Unknown error:", error);
-          }
+          console.error("Authentication error:", error);
           return null;
         }
       },
@@ -63,16 +77,55 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id as string;
+        token.id = user.id;
         token.accessToken = user.accessToken;
+        token.refreshToken = user.refreshToken;
+        token.accessTokenExpires = user.accessTokenExpires;
         token.role = user.role;
       }
-      return token;
+
+      if (!token.refreshToken || !token.accessTokenExpires) {
+        token.error = "RefreshAccessTokenError";
+        return token;
+      }
+
+      if (Date.now() < token.accessTokenExpires - 30_000) {
+        return token;
+      }
+
+      try {
+        const response = await axios.post<LoginResponse>(
+          `${backendUrl}/auth/refresh`,
+          {},
+          {
+            headers: {
+              Cookie: `refreshToken=${token.refreshToken}`,
+            },
+          },
+        );
+
+        if (!response.data.success) {
+          throw new Error("Backend rejected the refresh token");
+        }
+
+        token.accessToken = response.data.data.accessToken;
+        token.refreshToken = getRefreshToken(response.headers["set-cookie"]);
+        token.accessTokenExpires = Date.now() + 60 * 60 * 1000;
+        delete token.error;
+
+        return token;
+      } catch (error) {
+        console.error("Access token refresh failed:", error);
+        token.error = "RefreshAccessTokenError";
+        return token;
+      }
     },
+
     async session({ session, token }) {
       session.user.id = token.id;
       session.user.role = token.role;
       session.accessToken = token.accessToken;
+      session.error = token.error;
       return session;
     },
   },
