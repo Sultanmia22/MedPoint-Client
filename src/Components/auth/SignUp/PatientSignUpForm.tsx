@@ -10,6 +10,7 @@ import {
 import { registerUser } from "@/services/authService";
 import { handleApiError } from "@/lib/utils/errorHandler";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function PatientSignUpForm() {
 
@@ -21,26 +22,32 @@ export default function PatientSignUpForm() {
     formState: { errors, isSubmitting },
   } = useForm<PatientRegisterFormData>({
     resolver: zodResolver(patientRegisterSchema),
+    defaultValues: {
+      role: "patient",
+    },
   });
 
   const onSubmit: SubmitHandler<PatientRegisterFormData> = async (data) => {
+    console.log(data)
     try {
       const result = await registerUser(data);
       
       // console.log("Result",result)
       if (result.success) {
-        alert("Registration successful! Please login.");
-        router.push('/signin')
+        toast.success("Registration successful! Please login.");
+        router.push("/sign-in");
       } else {
-        alert(result.message);
+        toast.success(result.message);
       }
     } catch (error) {
-      alert(handleApiError(error))
+      toast.error(handleApiError(error))
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+      <input {...register("role")} type="hidden" />
+
       <div className="space-y-6">
         {/* Name */}
         <div className="space-y-3">
@@ -78,10 +85,12 @@ export default function PatientSignUpForm() {
             Phone Number
           </label>
           <input
-            {...register("phone")}
+            {...register("phone", {
+              setValueAs: (value: string) => value || undefined,
+            })}
             type="tel"
             className={`input w-full ${errors.phone ? "border-red-500" : ""}`}
-            placeholder="+880 1X XXXXXXXX"
+            placeholder="01XXXXXXXXX"
           />
           {errors.phone && (
             <p className="text-red-500 text-sm">{errors.phone.message}</p>

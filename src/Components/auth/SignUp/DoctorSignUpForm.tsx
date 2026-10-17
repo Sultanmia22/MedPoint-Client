@@ -14,6 +14,7 @@ import { handleApiError } from "@/lib/utils/errorHandler";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function DoctorSignUpForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
@@ -58,15 +59,15 @@ export default function DoctorSignUpForm() {
       const result = await registerUser(data);
 
       if (result.success) {
-        alert(
+        toast.success(
           "Registration successful! Your account will be reviewed within 24-48 hours.",
         );
         router.push("/sign-in");
       } else {
-        alert(result.message);
+        toast.success(result.message);
       }
     } catch (error) {
-      alert(handleApiError(error));
+      toast.error(handleApiError(error));
     }
   };
 
