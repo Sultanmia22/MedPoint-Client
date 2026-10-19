@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      data-theme="medpoint-dark"
+      data-theme="medpoint"
       lang="en"
       className={`${inter.variable} ${lora.variable} h-full antialiased`}
     >

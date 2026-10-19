@@ -5,6 +5,7 @@ type AuthError = "RefreshAccessTokenError";
 declare module "next-auth" {
   interface User extends DefaultUser {
     id: string;
+    displayId: string; 
     accessToken: string;
     refreshToken: string;
     accessTokenExpires: number;
@@ -14,6 +15,7 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: DefaultSession["user"] & {
       id: string;
+      displayId: string;   
       role: string;
     };
     accessToken: string;
@@ -24,6 +26,7 @@ declare module "next-auth" {
 declare module "@auth/core/jwt" {
   interface JWT {
     id: string;
+     displayId: string;
     accessToken: string;
     refreshToken: string;
     accessTokenExpires: number;
