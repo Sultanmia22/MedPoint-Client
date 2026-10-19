@@ -1,39 +1,51 @@
 // config/profileMenus.ts
+import {
+  User,
+  Calendar,
+  Clock,
+  Star,
+  Settings,
+  Stethoscope,
+  GraduationCap,
+  Server,
+  FileText,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export type ProfileMenuItem = {
   label: string;
   href: string;
+  icon: LucideIcon;
 };
 
 export type UserRole = "patient" | "doctor" | "admin" | null;
 
 // ========== PATIENT PROFILE MENU ==========
 export const patientProfileMenu: ProfileMenuItem[] = [
-  { label: "My Profile", href: "/patient/profile" },
-  { label: "My Appointments", href: "/patient/appointments" },
-  { label: "Appointment History", href: "/patient/appointment-history" },
-  { label: "My Reviews", href: "/patient/reviews" },
-  { label: "Settings", href: "/patient/settings" },
-  { label: "Logout", href: "/logout" },
+  { label: "My Profile", href: "/patient/profile", icon: User },
+  { label: "My Appointments", href: "/patient/appointments", icon: Calendar },
+  { label: "Appointment History", href: "/patient/appointment-history", icon: Clock },
+  { label: "My Reviews", href: "/patient/reviews", icon: Star },
+  { label: "Settings", href: "/patient/settings", icon: Settings },
 ];
 
 // ========== DOCTOR PROFILE MENU ==========
 export const doctorProfileMenu: ProfileMenuItem[] = [
-  { label: "My Profile", href: "/doctor/profile" },
-  { label: "Professional Details", href: "/doctor/profile/details" },
-  { label: "Qualifications", href: "/doctor/profile/qualifications" },
-  { label: "My Reviews", href: "/doctor/reviews" },
-  { label: "Settings", href: "/doctor/settings" },
-  { label: "Logout", href: "/logout" },
+  { label: "My Profile", href: "/doctor/profile", icon: User },
+  { label: "Professional Details", href: "/doctor/profile/details", icon: Stethoscope },
+  { label: "Qualifications", href: "/doctor/profile/qualifications", icon: GraduationCap },
+  { label: "My Reviews", href: "/doctor/reviews", icon: Star },
+  { label: "Settings", href: "/doctor/settings", icon: Settings },
 ];
 
 // ========== ADMIN PROFILE MENU ==========
 export const adminProfileMenu: ProfileMenuItem[] = [
-  { label: "My Profile", href: "/admin/profile" },
-  { label: "Admin Settings", href: "/admin/settings" },
-  { label: "System Configuration", href: "/admin/config" },
-  { label: "Audit Logs", href: "/admin/logs" },
-  { label: "Logout", href: "/logout" },
+  { label: "My Profile", href: "/admin/profile", icon: User },
+  { label: "Admin Settings", href: "/admin/settings", icon: Settings },
+  { label: "System Configuration", href: "/admin/config", icon: Server },
+  { label: "Audit Logs", href: "/admin/logs", icon: FileText },
 ];
 
 // ========== PUBLIC PROFILE MENU (None - Login/Signup instead) ==========
@@ -68,6 +80,6 @@ export const hasProfileMenu = (role: UserRole): boolean => {
  * Public auth menu (Login/Signup)
  */
 export const getPublicAuthMenu = (): ProfileMenuItem[] => [
-  { label: "Login", href: "/sign-in" },
-  { label: "Sign Up", href: "/sign-up" },
+  { label: "Login", href: "/sign-in", icon: LogIn },
+  { label: "Sign Up", href: "/sign-up", icon: UserPlus },
 ];
