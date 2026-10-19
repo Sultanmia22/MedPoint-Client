@@ -19,7 +19,11 @@ const Navbar = () => {
           <Container className="bg-base-100 shadow-md md:rounded-lg">
             <nav className="flex h-16 items-center justify-between">
               {/* Logo Start */}
-              <section className="flex items-center">
+              <section className="flex items-center gap-3">
+                <HumburgerButton
+                  isOpen={drawerOpen}
+                  onClick={() => setDrawerOpen(!drawerOpen)}
+                />
                 <Logo />
               </section>
               {/* Logo END */}
@@ -31,10 +35,6 @@ const Navbar = () => {
               {/* Right Section  Start*/}
               <section className="flex items-center gap-3">
                 <ProfileAndAuth />
-                <HumburgerButton
-                  isOpen={drawerOpen}
-                  onClick={() => setDrawerOpen(!drawerOpen)}
-                />
               </section>
               {/* Right Section  END*/}
             </nav>
