@@ -3,7 +3,7 @@ import { useState } from "react";
 import Logo from "@/Components/common/Logo/Logo";
 import HumburgerButton from "../MobileNav/HamburgerButton";
 import MobileDrower from "../MobileNav/MobileDrawer";
-import ProfileAndAuth from "../Auth/ProfileAndAuth";
+import ProfileAndAuth from "../ProfileDropdown/ProfileAndAuth";
 import Container from "@/Components/common/Container/Container";
 import type { UserRole } from "@/lib/types/User.Interface";
 import DesktopNavMenu from "../DesktopNav/DesktopNavMenu";

@@ -1,33 +1,22 @@
 "use client";
 
 import React from "react";
-import {
-  User,
-  Calendar,
-  Clock,
-  Star,
-  Settings,
-  LogOut,
-} from "lucide-react";
+import { LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface MenuItem {
-  label: string;
-  link: string,
-  icon: React.ReactNode;
-  danger?: boolean;
-}
-
-const menuItems: MenuItem[] = [
-  { label: "My Profile", icon: <User size={18} />, link: "my-profile" },
-  { label: "My Appointments", icon: <Calendar size={18} />, link: "my-appointment" },
-  { label: "Appointment History", icon: <Clock size={18} />, link: "appointment-history" },
-  { label: "My Reviews", icon: <Star size={18} />, link: "my-review" },
-  { label: "Settings", icon: <Settings size={18} />, link: "settings" },
-];
+import { useSession } from "next-auth/react";
+import {
+  getProfileMenuByRole,
+  type UserRole,
+} from "@/config/profileMenus/profileMenus";
 
 const ProfileDropDown: React.FC = () => {
+  const { data: session } = useSession();
+  const role = session?.user.role;
+  const userRole: UserRole =
+    role === "patient" || role === "doctor" || role === "admin" ? role : null;
+  const profileMenu = getProfileMenuByRole(userRole);
+
   return (
     <div className="w-64 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
       {/* Profile Header */}
@@ -50,21 +39,22 @@ const ProfileDropDown: React.FC = () => {
       </div>
 
       {/* Menu Items */}
-     <nav className="py-2">
-  {menuItems.map((item) => (
-    <Link
-      key={item.label}
-      href={item.link}
-      className={`
-        w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
-        transition-colors duration-150 rounded-md hover:bg-base-200 hover:text-primary 
-      `}
-    >
-      {item.icon}
-      {item.label}
-    </Link>
-  ))}
-</nav>
+      <nav className="py-2">
+        {profileMenu.map((item) => {
+          const Icon = item.icon;
+
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors duration-150 rounded-md hover:bg-base-200 hover:text-primary"
+            >
+              <Icon size={18} />
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
 
       {/* Divider */}
       <div className="border-t border-gray-100" />
