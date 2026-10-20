@@ -32,7 +32,7 @@ const Navbar = () => {
               {/* Logo END */}
 
               {/* Desktop NavMenu Start */}
-              <DesktopNavMenu />
+              <DesktopNavMenu role={role}/>
               {/* Desktop NavMenu END */}
 
               {/* Right Section  Start*/}

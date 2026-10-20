@@ -3,21 +3,29 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { X, User } from "lucide-react";
-import { getNavItemsByRole} from "@/config/navItems/navItems";
+import { getNavItemsByRole } from "@/config/navItems/navItems";
 import type { UserRole } from "@/lib/types/User.Interface";
+import { signOut, useSession } from "next-auth/react";
 
 interface MobileDrawerProps {
   open: boolean;
   onClose: () => void;
   role?: UserRole;
-  onLogout?: () => void;
 }
 
-const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProps) => {
+const MobileDrawer = ({
+  open,
+  onClose,
+  role = null,
+}: MobileDrawerProps) => {
   const navItems = getNavItemsByRole(role);
+  const { data: session, status } = useSession();
+  const isLoggedIn = status === "authenticated" && Boolean(session?.user);
 
-  // role না থাকা মানেই login করা নেই — এখন isLoggedIn আলাদা state না রেখে role থেকেই বের করা হচ্ছে
-  const isLoggedIn = role !== null;
+  const handleLogout = async () => {
+    onClose();
+    await signOut({ redirectTo: "/sign-in" });
+  };
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -45,7 +53,6 @@ const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProp
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-
         {/* Header */}
         <div className="relative border-b border-base-300 px-4 py-4 min-h-15">
           <button
@@ -70,8 +77,12 @@ const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProp
               </div>
 
               <div>
-                <p className="text-base-content text-xl font-semibold">MD Sultan Mia</p>
-                <p className="text-sm text-base-content/60">sultanmia5322@gmai.com</p>
+                <p className="text-base-content text-xl font-semibold">
+                {session?.user.name}
+                </p>
+                <p className="text-sm text-base-content/60">
+                  {session?.user.email}
+                </p>
               </div>
             </div>
           )}
@@ -100,7 +111,7 @@ const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProp
           {isLoggedIn ? (
             <button
               type="button"
-              onClick={onLogout}
+              onClick={handleLogout}
               className="w-full rounded-md border border-primary py-2 text-center text-sm font-medium text-primary transition-colors hover:bg-primary/5"
             >
               Logout
@@ -111,7 +122,9 @@ const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProp
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
                   <User className="h-4 w-4 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-base-content">Guest User</span>
+                <span className="text-sm font-medium text-base-content">
+                  Guest User
+                </span>
               </div>
 
               <div className="flex gap-2">

@@ -74,9 +74,17 @@ const ProfileAndAuth = () => {
               )}
             </AnimatePresence>
           </div>
-          <span className="hidden sm:block text-sm md:text-base font-medium text-base-content">
-            {session.user.name ?? session.user.email ?? "User"}
-          </span>
+          <div className="hidden min-w-0 sm:flex sm:flex-col sm:justify-center">
+  <span className="max-w-40 truncate text-sm font-semibold leading-tight text-base-content">
+    {session.user.name ?? session.user.email ?? "User"}
+  </span>
+
+  {session.user.displayId && (
+    <span className="max-w-40 truncate text-xs leading-tight text-base-content/60">
+      ID: {session.user.displayId}
+    </span>
+  )}
+</div>
         </div>
       ) : (
         // Not logged in UI

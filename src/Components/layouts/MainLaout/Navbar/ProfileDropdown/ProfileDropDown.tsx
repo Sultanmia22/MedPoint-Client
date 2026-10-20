@@ -20,9 +20,9 @@ const ProfileDropDown: React.FC = () => {
   const profileMenu = getProfileMenuByRole(userRole);
 
   return (
-    <div className="w-64 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+    <div className="w-64 bg-base-100 text-base-content rounded-xl shadow-lg border border-base-300 overflow-hidden">
       {/* Profile Header */}
-      <div className="flex items-center gap-3 px-4 py-4 border-b border-gray-100">
+      <div className="flex items-center gap-3 px-4 py-4 border-b border-base-300">
         <Image
           src="https://i.ibb.co.com/KzS70M8H/My-Professional-iamge-1.png"
           alt="Sarah Mitchell"
@@ -31,11 +31,11 @@ const ProfileDropDown: React.FC = () => {
           height={40}
         />
         <div className="flex flex-col">
-          <span className="text-sm font-semibold text-gray-800">
-            Sarah Mitchell
+          <span className="text-sm font-semibold text-base-content">
+            {session?.user.name}
           </span>
-          <span className="text-xs text-gray-400">
-            sarah.mitchell@example.com
+          <span className="text-xs text-base-content/60">
+            {session?.user.email}
           </span>
         </div>
       </div>
@@ -49,7 +49,7 @@ const ProfileDropDown: React.FC = () => {
             <Link
               key={item.label}
               href={item.href}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors duration-150 rounded-md hover:bg-base-200 hover:text-primary"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-base-content transition-colors duration-150 rounded-md hover:bg-base-200 hover:text-primary"
             >
               <Icon size={18} />
               {item.label}
@@ -59,12 +59,12 @@ const ProfileDropDown: React.FC = () => {
       </nav>
 
       {/* Divider */}
-      <div className="border-t border-gray-100" />
+      <div className="border-t border-base-300" />
 
       {/* Logout */}
       <button 
       onClick={() => signOut()}
-      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 transition-colors duration-150">
+      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-error hover:bg-error/10 transition-colors duration-150">
         <LogOut size={18} />
         Logout
       </button>
