@@ -4,7 +4,7 @@ import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
 import { loginSchema, type LoginFormData } from "@/schemas/authSchemas/signinSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MoveRight } from "lucide-react";
+import { ArrowLeft, MoveRight } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -44,9 +44,16 @@ export default function SignInForm() {
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
-      <main className="w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-5 md:px-4 lg:px-4">
+      <main className="w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-5 px-4 md:px-4 lg:px-4">
         {/* Logo Section Start */}
-        <div className="flex md:hidden">
+        <div className="flex flex-col items-start gap-3 md:hidden">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 rounded-lg bg-base-100 px-3 py-2 text-base-content transition-colors hover:bg-base-300"
+          >
+            <ArrowLeft size={16} />
+            <span className="text-xs">Back to Home</span>
+          </Link>
           <Logo />
         </div>
         {/* Logo Section End */}

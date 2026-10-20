@@ -2,7 +2,7 @@
 
 import Logo from "@/Components/common/Logo/Logo";
 import TrustBadges from "@/Components/common/TrustBadges/TrustBadges";
-import { MoveRight } from "lucide-react";
+import { ArrowLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -17,8 +17,15 @@ export default function SignUpForm() {
 
   return (
     <div className="min-h-full w-full flex justify-center items-center">
-      <main className="w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-5 md:px-4 lg:px-4">
-        <div className="flex md:hidden">
+      <main className="w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-5 px-4 md:px-4 lg:px-4">
+        <div className="flex flex-col items-start gap-3 md:hidden">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 rounded-lg bg-base-100 px-3 py-2 text-base-content transition-colors hover:bg-base-300"
+          >
+            <ArrowLeft size={16} />
+            <span className="text-xs">Back to Home</span>
+          </Link>
           <Logo />
         </div>
 

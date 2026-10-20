@@ -5,10 +5,10 @@ import HumburgerButton from "../MobileNav/HamburgerButton";
 import MobileDrower from "../MobileNav/MobileDrawer";
 import ProfileAndAuth from "../ProfileDropdown/ProfileAndAuth";
 import Container from "@/Components/common/Container/Container";
-import type { UserRole } from "@/lib/types/User.Interface";
 import DesktopNavMenu from "../DesktopNav/DesktopNavMenu";
 import { useSession } from "next-auth/react";
 import { getValidRole } from "@/lib/utils/getValidRole";
+import ThemeToggle from "@/Components/common/ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -37,6 +37,7 @@ const Navbar = () => {
 
               {/* Right Section  Start*/}
               <section className="flex items-center gap-3">
+                <ThemeToggle />
                 <ProfileAndAuth />
               </section>
               {/* Right Section  END*/}

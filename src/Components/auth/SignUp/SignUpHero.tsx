@@ -13,7 +13,7 @@ const SignUpHero = () => {
         <div className="w-full flex justify-start flex-col gap-2">
           <Link
             href="/"
-            className="flex items-center gap-1.5 rounded-lg bg-secondary-content/10 px-3 py-2 text-secondary-content/70 transition-colors hover:bg-secondary-content/15"
+            className="flex items-center gap-1.5 rounded-lg  bg-secondary-content/10 dark:bg-base-100 px-3 py-2 text-base-content dark:border dark:border-base-accent transition-colors hover:bg-secondary-content/15"
           >
             <ArrowLeft size={16} />
             <span className="text-xs">Back to Home</span>
