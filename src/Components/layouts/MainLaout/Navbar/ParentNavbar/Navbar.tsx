@@ -7,10 +7,13 @@ import ProfileAndAuth from "../ProfileDropdown/ProfileAndAuth";
 import Container from "@/Components/common/Container/Container";
 import type { UserRole } from "@/lib/types/User.Interface";
 import DesktopNavMenu from "../DesktopNav/DesktopNavMenu";
+import { useSession } from "next-auth/react";
+import { getValidRole } from "@/lib/utils/getValidRole";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const [role, setRole] = useState<UserRole>("admin");
+  const { data: session } = useSession();
+  const role = getValidRole(session?.user.role);
 
   return (
     <>
