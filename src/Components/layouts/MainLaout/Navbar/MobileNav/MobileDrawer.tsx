@@ -28,7 +28,7 @@ const MobileDrawer = ({ open, onClose, role = null, onLogout }: MobileDrawerProp
 
   return (
     <div
-      className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
+      className={`fixed inset-0 z-50 xl:hidden ${open ? "" : "pointer-events-none"}`}
       aria-hidden={!open}
     >
       {/* Overlay */}

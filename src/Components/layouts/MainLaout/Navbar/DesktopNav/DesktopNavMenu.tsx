@@ -15,7 +15,7 @@ const DesktopNavMenu = ({ role = null }: DesktopMenuProps) => {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden md:flex items-center gap-6">
+    <nav className="hidden xl:flex items-center gap-6">
       {navItems.map(({ label, href, icon: Icon }) => {
         const isActive = pathname === href;
 
