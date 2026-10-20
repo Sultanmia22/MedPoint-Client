@@ -37,7 +37,6 @@ export const adminDashboardMenu: DashboardMenuItem[] = [
   { label: "Specialties", href: "/admin/specialties" },
   { label: "Analytics", href: "/admin/analytics" },
   { label: "User Management", href: "/admin/users" },
-  { label: "System Settings", href: "/admin/settings" },
 ];
 
 // ========== PUBLIC DASHBOARD MENU (None) ==========

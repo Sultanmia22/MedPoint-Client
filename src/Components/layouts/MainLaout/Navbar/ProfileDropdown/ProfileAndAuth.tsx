@@ -56,7 +56,6 @@ const ProfileAndAuth = () => {
           <span className="hidden sm:block text-sm md:text-base font-medium text-base-content">
             {session.user.name ?? session.user.email ?? "User"}
           </span>
-          <button onClick={() => signOut()}>Logout</button>
         </div>
       ) : (
         // Not logged in UI

@@ -1,8 +1,7 @@
 // config/profileMenus.ts
 import {
   User,
-  Calendar,
-  Clock,
+  LayoutDashboard,
   Star,
   Settings,
   Stethoscope,
@@ -24,15 +23,14 @@ export type UserRole = "patient" | "doctor" | "admin" | null;
 
 // ========== PATIENT PROFILE MENU ==========
 export const patientProfileMenu: ProfileMenuItem[] = [
+  { label: "Dashboard", href: "/patient/dashboard", icon: LayoutDashboard },
   { label: "My Profile", href: "/patient/profile", icon: User },
-  { label: "My Appointments", href: "/patient/appointments", icon: Calendar },
-  { label: "Appointment History", href: "/patient/appointment-history", icon: Clock },
-  { label: "My Reviews", href: "/patient/reviews", icon: Star },
   { label: "Settings", href: "/patient/settings", icon: Settings },
 ];
 
 // ========== DOCTOR PROFILE MENU ==========
 export const doctorProfileMenu: ProfileMenuItem[] = [
+  { label: "Dashboard", href: "/doctor/dashboard", icon: LayoutDashboard },
   { label: "My Profile", href: "/doctor/profile", icon: User },
   { label: "Professional Details", href: "/doctor/profile/details", icon: Stethoscope },
   { label: "Qualifications", href: "/doctor/profile/qualifications", icon: GraduationCap },
@@ -42,6 +40,7 @@ export const doctorProfileMenu: ProfileMenuItem[] = [
 
 // ========== ADMIN PROFILE MENU ==========
 export const adminProfileMenu: ProfileMenuItem[] = [
+  { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { label: "My Profile", href: "/admin/profile", icon: User },
   { label: "Admin Settings", href: "/admin/settings", icon: Settings },
   { label: "System Configuration", href: "/admin/config", icon: Server },

@@ -4,17 +4,19 @@ import React from "react";
 import { LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import {
   getProfileMenuByRole,
   type UserRole,
 } from "@/config/profileMenus/profileMenus";
 
 const ProfileDropDown: React.FC = () => {
+
   const { data: session } = useSession();
   const role = session?.user.role;
-  const userRole: UserRole =
-    role === "patient" || role === "doctor" || role === "admin" ? role : null;
+  const userRole: UserRole = role === "patient" || role === "doctor" || role === "admin" ? role : null;
+
+
   const profileMenu = getProfileMenuByRole(userRole);
 
   return (
@@ -60,7 +62,9 @@ const ProfileDropDown: React.FC = () => {
       <div className="border-t border-gray-100" />
 
       {/* Logout */}
-      <button className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 transition-colors duration-150">
+      <button 
+      onClick={() => signOut()}
+      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 transition-colors duration-150">
         <LogOut size={18} />
         Logout
       </button>
