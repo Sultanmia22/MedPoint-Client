@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 import { getValidRole } from "@/lib/utils/getValidRole";
 import ThemeToggle from "@/Components/common/ThemeToggle/ThemeToggle";
 import RolePortalBadge from "@/Components/common/RolePortalBadge/RolePortalBadge";
+import NotificationBell from "@/Components/common/NotificationBell/NotificationBell";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -42,6 +43,7 @@ const Navbar = () => {
               {/* Right Section  Start*/}
               <section className="flex items-center gap-3">
                 <ThemeToggle />
+                <NotificationBell />
                 <ProfileAndAuth />
               </section>
               {/* Right Section  END*/}
