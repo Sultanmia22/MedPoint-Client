@@ -6,6 +6,7 @@ import { X, User } from "lucide-react";
 import { getNavItemsByRole } from "@/config/navItems/navItems";
 import type { UserRole } from "@/lib/types/User.Interface";
 import { signOut, useSession } from "next-auth/react";
+import RolePortalBadge from "@/Components/common/RolePortalBadge/RolePortalBadge";
 
 interface MobileDrawerProps {
   open: boolean;
@@ -54,19 +55,19 @@ const MobileDrawer = ({
         }`}
       >
         {/* Header */}
-        <div className="relative border-b border-base-300 px-4 py-4 min-h-15">
+        <div className="relative border-b border-base-300 px-2 py-2 min-h-12">
           <button
             type="button"
             onClick={onClose}
             aria-label="Close menu"
             className="absolute top-3 right-3 z-10 flex items-center justify-center w-9 h-9 rounded-lg border border-base-300 text-base-content hover:bg-primary/10 hover:text-primary transition-colors"
           >
-            <X className="h-6 w-6" />
+            <X size={18} />
           </button>
 
           {isLoggedIn && (
             <div className="flex items-center gap-3">
-              <div className="w-16 h-16 rounded-full border-2 border-primary overflow-hidden">
+              <div className="w-12 h-12 rounded-full border-2 border-primary overflow-hidden">
                 <Image
                   className="w-full h-full object-cover"
                   src="/images/userProfile.jpg"
@@ -86,6 +87,9 @@ const MobileDrawer = ({
               </div>
             </div>
           )}
+          <div className="mt-3 md:hidden">
+            <RolePortalBadge role={role} />
+          </div>
         </div>
 
         {/* Navigation */}

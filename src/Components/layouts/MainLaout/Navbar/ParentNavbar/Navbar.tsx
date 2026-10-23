@@ -9,6 +9,7 @@ import DesktopNavMenu from "../DesktopNav/DesktopNavMenu";
 import { useSession } from "next-auth/react";
 import { getValidRole } from "@/lib/utils/getValidRole";
 import ThemeToggle from "@/Components/common/ThemeToggle/ThemeToggle";
+import RolePortalBadge from "@/Components/common/RolePortalBadge/RolePortalBadge";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -22,12 +23,15 @@ const Navbar = () => {
           <Container className="bg-base-100 shadow-md md:rounded-lg">
             <nav className="flex h-16 items-center justify-between">
               {/* Logo Start */}
-              <section className="flex items-center gap-2">
+              <section className="flex items-center gap-3">
                 <HumburgerButton
                   isOpen={drawerOpen}
                   onClick={() => setDrawerOpen(!drawerOpen)}
                 />
                 <Logo />
+                <div className="hidden md:ml-2 md:block">
+                  <RolePortalBadge role={role} />
+                </div>
               </section>
               {/* Logo END */}
 
