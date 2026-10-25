@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         pathname: '/100',
         search: '?img=47',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
   },
 };

@@ -17,7 +17,7 @@ const PopularSpecialties = () => {
         transition={{ duration: 0.55, ease: "easeOut" }}
       >
         <div>
-          <span className=" uppercase bg-primary/20 px-3 py-1 text-primary text-sm font-semibold rounded-full">
+          <span className=" inline-flex items-center gap-2 bg-secondary/10 dark:bg-secondary/15 text-primary text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full">
             BROWSE BY SPECIALTY
           </span>
         </div>
@@ -28,7 +28,8 @@ const PopularSpecialties = () => {
 
         <div>
           <p className="text-base leading-7 text-base-content/70 sm:text-lg text-center">
-            Find the right specialist for your immediate clinical and diagnostic needs.
+            Find the right specialist for your immediate clinical and diagnostic
+            needs.
           </p>
         </div>
       </motion.div>

@@ -1,3 +1,4 @@
+import FeatureDcotor from '@/Components/home/FeatureDoctor/FeatureDcotor'
 import Hero from '@/Components/home/Hero/Hero'
 import PopularSpecialties from '@/Components/home/PopularSpecialtiesSection/PopularSpecialties'
 import Process from '@/Components/home/ProcessSection/Process'
@@ -20,6 +21,11 @@ const page = () => {
       {/* Popular Specialties Section*/}
       <section>
         <PopularSpecialties />
+      </section>
+
+      {/* Feature Doctor */}
+      <section>
+        <FeatureDcotor />
       </section>
     </div>
   )

@@ -5,7 +5,7 @@ const Header = () => {
     <div>
       <div className="Process-Header-Container flex flex-col justify-center items-center gap-3">
         <div>
-          <span className=" uppercase bg-info/20 px-3 py-1 text-info text-sm font-semibold rounded-full">
+          <span className=" inline-flex items-center gap-2 bg-info/20  text-info text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full">
             SIMPLE PROCESS
           </span>
         </div>
