@@ -28,7 +28,7 @@ const HeroLeft = () => {
 
   return (
     <motion.div
-      className="flex flex-col gap-7"
+      className="flex flex-col gap-7 h-full"
       variants={sectionVariants}
       initial={shouldReduceMotion ? false : "hidden"}
       animate="visible"

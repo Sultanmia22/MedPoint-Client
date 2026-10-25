@@ -7,7 +7,7 @@ const HeroImage = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="relative h-100 overflow-hidden rounded-3xl border border-base-content/5 shadow-xl shadow-secondary/10 lg:h-[580px] xl:h-[640px]">
+    <div className="relative h-100 overflow-hidden rounded-3xl border border-base-content/5 shadow-xl shadow-secondary/10 lg:lg:h-145 xl:xl:h-160">
       <motion.div
         className="absolute inset-0"
         initial={
