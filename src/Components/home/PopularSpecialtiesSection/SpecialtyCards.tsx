@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import {
   HeartPulse,
   Sparkles,
@@ -37,12 +38,37 @@ const specialtiesData: SpecialtyItem[] = [
   { id: 12, icon: Droplet, name: "Urologist", doctors: 16 },
 ];
 
+const cardsVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.05 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
 const SpecialtyCards = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <motion.section
+      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+      variants={cardsVariants}
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
       {specialtiesData.map((item) => (
-        <button
+        <motion.button
           key={item.id}
+          variants={cardVariants}
           type="button"
           className="group flex flex-col items-center gap-3 bg-base-200 rounded-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-base-content/5"
         >
@@ -59,9 +85,9 @@ const SpecialtyCards = () => {
 
           {/* Doctor Count */}
           <p className="text-sm text-base-content/60">{item.doctors} Doctors</p>
-        </button>
+        </motion.button>
       ))}
-    </section>
+    </motion.section>
   );
 };
 

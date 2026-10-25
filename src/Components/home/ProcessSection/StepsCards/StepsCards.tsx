@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import {
   Search,
   CalendarDays,
@@ -46,12 +47,37 @@ const stepsData: StepItem[] = [
   },
 ];
 
+const cardsVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const StepsCards = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <motion.section
+      className="grid grid-cols-1 md:grid-cols-3 gap-6"
+      variants={cardsVariants}
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       {stepsData.map((item) => (
-        <div
+        <motion.div
           key={item.id}
+          variants={cardVariants}
           className="flex flex-col items-center text-center bg-base-200 rounded-2xl p-8 transition-all duration-200 hover:shadow-lg hover:shadow-base-content/5"
         >
           {/* Icon Circle */}
@@ -83,9 +109,9 @@ const StepsCards = () => {
               className="transition-transform duration-200 group-hover:translate-x-1"
             />
           </button>
-        </div>
+        </motion.div>
       ))}
-    </section>
+    </motion.section>
   );
 };
 
