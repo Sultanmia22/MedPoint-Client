@@ -1,4 +1,5 @@
 import Hero from '@/Components/home/Hero/Hero'
+import PopularSpecialties from '@/Components/home/PopularSpecialtiesSection/PopularSpecialties'
 import Process from '@/Components/home/ProcessSection/Process'
 import React from 'react'
 
@@ -14,6 +15,11 @@ const page = () => {
       {/* Process Section */}
       <section>
         <Process />
+      </section>
+
+      {/* Popular Specialties Section*/}
+      <section>
+        <PopularSpecialties />
       </section>
     </div>
   )
