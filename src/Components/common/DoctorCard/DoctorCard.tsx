@@ -1,18 +1,46 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { BadgeCheck, Star, Briefcase, MapPin } from "lucide-react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import type { IDoctorCardData } from "@/lib/types/doctors/doctors.interface";
 
 interface DoctorCardProps {
   FeaturDoctordata: IDoctorCardData[];
 }
 
+const cardsVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const DoctorCards = ({FeaturDoctordata}:DoctorCardProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <motion.section
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      variants={cardsVariants}
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+    >
       {FeaturDoctordata.map((doctor) => (
-        <article
+        <motion.article
           key={doctor.id}
+          variants={cardVariants}
           className="group bg-base-100 border border-base-200 dark:border-base-content/10 rounded-2xl overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-base-content/5"
         >
           {/* Doctor Image + Verified Badge */}
@@ -86,9 +114,9 @@ const DoctorCards = ({FeaturDoctordata}:DoctorCardProps) => {
               </button>
             </div>
           </div>
-        </article>
+        </motion.article>
       ))}
-    </section>
+    </motion.section>
   );
 };
 
