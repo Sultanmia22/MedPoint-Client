@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@custom-variant dark (&:where([data-theme="medpoint-dark"], [data-theme="medpoint-dark"] *));
 
 /* ===== LIGHT THEME (DaisyUI) ===== */
 @plugin "daisyui/theme" {
@@ -81,12 +82,12 @@
 
 /* ===== BASE STYLES ===== */
 @layer base {
-  h1 {
-    font-family: var(--font-lora), serif;
-    font-weight: 700;
-    font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
-    line-height: 1.2;
-  }
+h1 {
+  font-family: var(--font-lora), serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1rem + 2vw, 3rem);
+  line-height: 1.2;
+}
   h2 {
     font-family: var(--font-lora), serif;
     font-weight: 700;

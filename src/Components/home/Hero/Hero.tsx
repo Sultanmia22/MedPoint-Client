@@ -1,21 +1,21 @@
-import React from 'react'
-import HeroLeft from './HeroLeft'
-import HeroRight from './HeroRight'
+import React from "react";
+import HeroRight from "./HeroRight/HeroRight";
+import HeroLeft from "./HeroLeft/HeroLeft";
 
 const Hero = () => {
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-5 gap-4'>
-       {/* Hero Left Side */}
-       <div className='lg:col-span-3 border border-y-emerald-700'>
-        <HeroLeft/>
-       </div>
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      {/* Hero Left Side */}
+      <div>
+        <HeroLeft />
+      </div>
 
-       {/* Hero Right Side */}
-       <div className='lg:col-span-2 border border-red-600'>
+      {/* Hero Right Side */}
+      <div>
         <HeroRight />
-       </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
