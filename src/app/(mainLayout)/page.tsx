@@ -1,3 +1,4 @@
+import CallToAction from '@/Components/home/CalltoAction/CalltoAction'
 import FeatureDcotor from '@/Components/home/FeatureDoctor/FeatureDcotor'
 import FeaturesSection from '@/Components/home/FeaturesSection/FeaturesSection'
 import Hero from '@/Components/home/Hero/Hero'
@@ -44,6 +45,11 @@ const page = () => {
       {/* Statistics Section */}
       <section>
         <StatisticsSection />
+      </section>
+
+      {/* Call to Action Section */}
+      <section>
+        <CallToAction />
       </section>
     </div>
   )
