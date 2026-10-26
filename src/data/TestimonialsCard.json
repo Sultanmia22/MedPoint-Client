@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "rating": 5,
+    "review": "The booking process was so simple and the doctor was amazing. I found a top cardiologist within minutes, confirmed my appointment, and had a seamless clinic consultation. Highly recommend MedPoint!",
+    "name": "Emily Watson",
+    "time": "2 weeks ago",
+    "avatar": "https://res.cloudinary.com/bphvspbr/image/upload/v1793005276/Testimonial_Avtar1.png"
+  },
+  {
+    "id": 2,
+    "rating": 5,
+    "review": "Booking an appointment for my daughter's allergy specialist used to take weeks. With MedPoint, verified doctor ratings and straightforward calendar slots made everything effortless and clear.",
+    "name": "Marcus Vance",
+    "time": "1 month ago",
+    "avatar": "https://res.cloudinary.com/bphvspbr/image/upload/v1793005309/Testi_Avtar2.png"
+  },
+  {
+    "id": 3,
+    "rating": 5,
+    "review": "Remarkable healthcare experience from start to finish. Finding transparent consultation fees upfront without any hidden surcharges gave me total confidence in MedPoint. Five stars!",
+    "name": "Robert Davies",
+    "time": "3 days ago",
+    "avatar": "https://res.cloudinary.com/bphvspbr/image/upload/v1793005363/T_Avtar3.png"
+  }
+]

@@ -3,6 +3,7 @@ import FeaturesSection from '@/Components/home/FeaturesSection/FeaturesSection'
 import Hero from '@/Components/home/Hero/Hero'
 import PopularSpecialties from '@/Components/home/PopularSpecialtiesSection/PopularSpecialties'
 import Process from '@/Components/home/ProcessSection/Process'
+import Testimonial from '@/Components/home/Testimonial/Testimonial'
 import React from 'react'
 
 const page = () => {
@@ -32,6 +33,11 @@ const page = () => {
       {/* Features Section */}
       <section>
         <FeaturesSection />
+      </section>
+
+      {/* Testimonials Section */}
+      <section>
+        <Testimonial />
       </section>
     </div>
   )
