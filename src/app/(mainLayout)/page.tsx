@@ -3,6 +3,7 @@ import FeaturesSection from '@/Components/home/FeaturesSection/FeaturesSection'
 import Hero from '@/Components/home/Hero/Hero'
 import PopularSpecialties from '@/Components/home/PopularSpecialtiesSection/PopularSpecialties'
 import Process from '@/Components/home/ProcessSection/Process'
+import StatisticsSection from '@/Components/home/StatisticsSection/StatisticsSection'
 import Testimonial from '@/Components/home/Testimonial/Testimonial'
 import React from 'react'
 
@@ -38,6 +39,11 @@ const page = () => {
       {/* Testimonials Section */}
       <section>
         <Testimonial />
+      </section>
+
+      {/* Statistics Section */}
+      <section>
+        <StatisticsSection />
       </section>
     </div>
   )
