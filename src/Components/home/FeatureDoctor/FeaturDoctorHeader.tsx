@@ -14,7 +14,7 @@ const FeaturDoctorHeader = () => {
       >
         <div>
           <span className=" inline-flex items-center gap-2 bg-secondary/10 dark:bg-secondary/15 text-primary text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full ">
-            TOP RATED
+            <span className="w-2 h-2 bg-primary rounded-full"></span> TOP RATED
           </span>
         </div>
 
