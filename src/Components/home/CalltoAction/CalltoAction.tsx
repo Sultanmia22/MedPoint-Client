@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 
 type CtaVariant = "primary" | "accent";
 
@@ -53,17 +56,42 @@ const variantStyles: Record<
   },
 };
 
+const cardsVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const CallToAction = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-14 md:py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+        variants={cardsVariants}
+        initial={shouldReduceMotion ? false : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+      >
         {ctaData.map((item) => {
           const styles = variantStyles[item.variant];
 
           return (
-            <div
+            <motion.div
               key={item.id}
               className={`${styles.card} rounded-2xl p-8 md:p-10`}
+              variants={cardVariants}
             >
               {/* Badge */}
               <span
@@ -94,10 +122,10 @@ const CallToAction = () => {
                   className="transition-transform duration-200 group-hover:translate-x-1"
                 />
               </Link>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 };
