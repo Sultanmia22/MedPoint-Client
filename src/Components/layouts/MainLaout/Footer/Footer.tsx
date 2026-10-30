@@ -37,8 +37,8 @@ const footerColumns: FooterColumn[] = [
   {
     title: "For Doctors",
     links: [
-      { label: "Register", href: "/doctor/register" },
-      { label: "Login", href: "/doctor/login" },
+      { label: "Register", href: "/sign-up" },
+      { label: "Login", href: "/sign-in" },
       { label: "Dashboard", href: "/doctor/dashboard" },
       { label: "Terms", href: "/terms" },
     ],

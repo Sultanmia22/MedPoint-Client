@@ -15,8 +15,8 @@ const SignInHero = () => {
             href="/"
             className="flex items-center gap-1.5 rounded-lg bg-secondary-content/10 dark:bg-base-100 px-3 py-2 text-base-content dark:border dark:border-base-accent transition-colors hover:bg-secondary-content/15"
           >
-            <ArrowLeft size={16} />
-            <span className="text-xs">Back to Home</span>
+            <ArrowLeft size={16} className="text-white"/>
+            <span className="text-xs text-white">Back to Home</span>
           </Link>
           <Logo onSecondary />
         </div>

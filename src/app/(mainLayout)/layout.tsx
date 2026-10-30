@@ -6,7 +6,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Navbar />
-      <main>
+      <main className="flex-1">
         <Container>{children}</Container>
       </main>
       <Footer />
