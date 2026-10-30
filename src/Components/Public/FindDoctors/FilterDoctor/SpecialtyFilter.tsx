@@ -46,7 +46,7 @@ const SpecialtyFilter = () => {
       <p className="text-sm font-bold text-base-content">Specialty</p>
 
       {/* ===== Checkbox List (map) ===== */}
-      <div className="flex flex-col gap-2.5 mt-2.5">
+      <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2.5 lg:grid-cols-1">
         {visibleSpecialties.map((specialty) => (
           <label
             key={specialty.id}

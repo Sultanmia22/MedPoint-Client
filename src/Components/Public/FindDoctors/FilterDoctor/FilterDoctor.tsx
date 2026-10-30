@@ -1,5 +1,5 @@
 import React from "react";
-import { Funnel, Search, Star } from "lucide-react";
+import { Funnel, Search } from "lucide-react";
 import SpecialtyFilter from "./SpecialtyFilter";
 import ExperienceFilter from "./Experience";
 import LocationFilter from "./LocationFilter";
@@ -11,7 +11,7 @@ import SortFilter from "./SortFilter";
 
 const FilterSection = () => {
   return (
-    <div className="bg-base-100 border border-base-300 shadow-sm rounded-2xl p-6 flex flex-col gap-6 max-h-[calc(100vh-6rem)] overflow-y-auto overscroll-contain custom-scrollbar">
+    <div className="bg-base-100 border border-base-300 shadow-sm rounded-2xl p-6 flex flex-col gap-6 lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:custom-scrollbar">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -39,9 +39,9 @@ const FilterSection = () => {
 
       {/* Location */}
       <LocationFilter />
-      
+
       {/* Gender */}
-     <GenderFilter />
+      <GenderFilter />
 
       {/* Availability */}
       <Availability />
