@@ -5,37 +5,37 @@ import React, { useState } from "react";
 
 /* ===== ডেটা উপরে ===== */
 const SPECIALTIES = [
-  { id: 1, name: "Cardiologist", checked: true },
-  { id: 2, name: "Dermatologist", checked: false },
-  { id: 3, name: "Pediatrician", checked: false },
-  { id: 4, name: "Orthopedic", checked: false },
-  { id: 5, name: "Gynecologist", checked: false },
-  { id: 6, name: "Dentist", checked: false },
-  { id: 7, name: "Neurologist", checked: false },
-  { id: 8, name: "ENT Specialist", checked: false },
-  { id: 9, name: "General Physician", checked: false },
-  { id: 10, name: "Psychiatrist", checked: false },
-  { id: 11, name: "Ophthalmologist", checked: false },
-  { id: 12, name: "Urologist", checked: false },
+  "Cardiologist",
+  "Dermatologist",
+  "Pediatrician",
+  "Orthopedic",
+  "Gynecologist",
+  "Dentist",
+  "Neurologist",
+  "ENT Specialist",
+  "General Physician",
+  "Psychiatrist",
+  "Ophthalmologist",
+  "Urologist",
 ];
 
-const VISIBLE_COUNT = 6; 
+interface SpecialtyFilterProps {
+  selected: string[];
+  onChange: (value: string[]) => void;
+}
 
-const SpecialtyFilter = () => {
+const VISIBLE_COUNT = 6;
+
+const SpecialtyFilter = ({ selected, onChange }: SpecialtyFilterProps) => {
   const [showAll, setShowAll] = useState(false);
 
-   const [selected, setSelected] = useState<string[]>(["Cardiologist"]);
-
-   const handleToggle = (name: string) => {
-    if(selected.includes(name)) {
-      setSelected(selected.filter((item) => item !== name))
-    }
-
-    else{
-      setSelected([name]) 
-    }
-   };
-
+  const toggle = (name: string) => {
+    onChange(
+      selected.includes(name)
+        ? selected.filter((s) => s !== name)
+        : [...selected, name]
+    );
+  };
 
   const visibleSpecialties = showAll
     ? SPECIALTIES
@@ -48,19 +48,14 @@ const SpecialtyFilter = () => {
       {/* ===== Checkbox List (map) ===== */}
       <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2.5 lg:grid-cols-1">
         {visibleSpecialties.map((specialty) => (
-          <label
-            key={specialty.id}
-            className="flex items-center gap-3 cursor-pointer"
-          >
+          <label key={specialty} className="flex items-center gap-3 cursor-pointer">
             <input
               type="checkbox"
-              checked={selected.includes(specialty.name)}
-              onChange={() => handleToggle(specialty.name)}
+              checked={selected.includes(specialty)}
+              onChange={() => toggle(specialty)}
               className="checkbox checkbox-primary checkbox-sm"
             />
-            <span className="text-sm text-base-content/70">
-              {specialty.name}
-            </span>
+            <span className="text-sm text-base-content/70">{specialty}</span>
           </label>
         ))}
       </div>

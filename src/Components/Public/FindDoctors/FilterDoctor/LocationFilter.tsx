@@ -16,12 +16,17 @@ const DIVISIONS = [
   { id: 9, name: "Mymensingh" },
 ];
 
-const LocationFilter = () => {
-  const [selectedDivision, setSelectedDivision] = useState("All Divisions");
+interface LocationFilterPops {
+  selected: string;
+  onChange: (value: string) => void;
+}
+
+const LocationFilter = ({selected, onChange}: LocationFilterPops) => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (name: string) => {
-    setSelectedDivision(name);
+    onChange(name);
     setIsOpen(false);
   };
 
@@ -36,7 +41,7 @@ const LocationFilter = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="w-full flex items-center justify-between bg-base-300/40 border border-base-300 dark:border-base-content/10 rounded-lg px-3 py-2.5 text-sm text-base-content cursor-pointer transition-colors duration-150 hover:border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary/30"
         >
-          {selectedDivision}
+          {selected}
           <ChevronDown
             size={16}
             className={`text-primary transition-transform duration-200 ${
@@ -62,15 +67,15 @@ const LocationFilter = () => {
               <li key={division.id}>
                 <button
                   type="button"
-                  onClick={() => handleSelect(division.name)}
+                  onClick={() => handleSelect(division.name.toLowerCase())}
                   className={`w-full flex items-center justify-between px-3 py-2.5 text-sm text-left transition-colors duration-100 ${
-                    selectedDivision === division.name
+                    selected === division.name
                       ? "bg-primary/10 text-primary font-bold"
                       : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
                   }`}
                 >
                   {division.name}
-                  {selectedDivision === division.name && (
+                  {selected === division.name && (
                     <Check size={14} className="text-primary" />
                   )}
                 </button>

@@ -1,14 +1,19 @@
-"use client"
-import React, { useState } from 'react'
+"use client";
 
-const ConsultationFee = () => {
-     const [maxFee, setMaxFee] = useState(3500);
+import React from "react";
+
+interface ConsultationFeeProps {
+  maxFee: number;
+  onChange: (value: number) => void;
+}
+
+const ConsultationFee = ({ maxFee, onChange }: ConsultationFeeProps) => {
   return (
     <div>
-        <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <p className="text-sm font-bold text-base-content">Consultation Fee</p>
         <span className="text-xs font-bold text-primary">
-          Up to: Tk {maxFee.toLocaleString()}
+          Up to: ${maxFee.toLocaleString()}
         </span>
       </div>
 
@@ -18,16 +23,16 @@ const ConsultationFee = () => {
         max={5000}
         step={100}
         value={maxFee}
-        onChange={(e) => setMaxFee(Number(e.target.value))}
+        onChange={(e) => onChange(Number(e.target.value))}
         className="range range-primary range-xs mt-3"
       />
 
-       <div className="flex justify-between text-[10px] text-base-content/50 mt-1">
-        <span className='text-xs text-base-content'>Tk 0</span>
-        <span className='text-xs text-base-content'>Tk 5000</span>
+      <div className="flex justify-between text-[10px] text-base-content/50 mt-1">
+        <span className="text-xs text-base-content">$0</span>
+        <span className="text-xs text-base-content">$5000</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ConsultationFee
+export default ConsultationFee;

@@ -1,22 +1,31 @@
-"use client"
-import React, { useState } from "react";
+"use client";
 
-const Availability = () => {
-  const AvailabilityList = ["Today", "Tommorow", "This Week"];
-  const [selectedAvailability,setSelectedAvailability] = useState("Today")
+import React from "react";
 
+interface AvailabilityProps {
+  selected: string;
+  onChange: (value: string) => void;
+}
+
+const AVAILABILITY = ["Today", "Tomorrow", "This Week"];
+
+const Availability = ({ selected, onChange }: AvailabilityProps) => {
   return (
     <div>
       <p className="text-sm font-bold text-base-content">Availability</p>
       <div className="grid grid-cols-3 gap-2 mt-2">
-        {AvailabilityList.map((list) => (
+        {AVAILABILITY.map((slot) => (
           <button
-            key={list}
-            onClick={() => setSelectedAvailability(list)}
+            key={slot}
             type="button"
-            className={`py-2 rounded-lg text-xs font-bold  text-base-content/70 ${selectedAvailability === list ? "bg-primary text-white" : "bg-base-300/40"}`}
+            onClick={() => onChange(slot)}
+            className={`py-2 rounded-lg text-xs font-bold transition-colors duration-150 ${
+              selected === slot
+                ? "bg-primary text-primary-content"
+                : "bg-base-300/40 text-base-content/70 hover:bg-base-300/60"
+            }`}
           >
-            {list}
+            {slot}
           </button>
         ))}
       </div>
