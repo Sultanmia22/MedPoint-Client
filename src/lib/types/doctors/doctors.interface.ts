@@ -10,26 +10,14 @@ export interface IDoctorCardData {
   image: string;
 }
 
-export interface DoctorFilters {
+export interface IDoctorFilters {
   search: string;
-  specialties: string[];
+  specialties: string[] | null;
   location: string;
-  gender: "Male" | "Female" | "Any";
+  gender: "male" | "female" | "any";
   availability: string;
   maxFee: number;
-  experience: string[];
+  experience: string[] | null;
   minRating: number | null;
   sortBy: string;
 }
-
-export const defaultFilters: DoctorFilters = {
-  search: "",
-  specialties: [],
-  location: "All Cities",
-  gender: "Any",
-  availability: "Today",
-  maxFee: 5000,
-  experience: [],
-  minRating: null,
-  sortBy: "Relevance",
-};

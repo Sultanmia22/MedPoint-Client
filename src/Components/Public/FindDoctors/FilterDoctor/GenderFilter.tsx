@@ -3,11 +3,15 @@
 import React from "react";
 
 interface GenderFilterProps {
-  selected: "Male" | "Female" | "Any";
-  onChange: (value: "Male" | "Female" | "Any") => void;
+  selected: "male" | "female" | "any";
+  onChange: (value: "male" | "female" | "any") => void;
 }
 
-const GENDERS = ["Male", "Female", "Any"] as const;
+const GENDERS = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "any", label: "Any" },
+] as const;
 
 const GenderFilter = ({ selected, onChange }: GenderFilterProps) => {
   return (
@@ -16,16 +20,16 @@ const GenderFilter = ({ selected, onChange }: GenderFilterProps) => {
       <div className="grid grid-cols-3 gap-2 mt-2">
         {GENDERS.map((gender) => (
           <button
-            key={gender}
+            key={gender.value}
             type="button"
-            onClick={() => onChange(gender)}
+            onClick={() => onChange(gender.value)}
             className={`py-2 rounded-lg text-xs font-bold transition-colors duration-150 ${
-              selected === gender
+              selected === gender.value
                 ? "bg-primary text-primary-content"
                 : "bg-base-300/40 text-base-content/70 hover:bg-base-300/60"
             }`}
           >
-            {gender}
+            {gender.label}
           </button>
         ))}
       </div>

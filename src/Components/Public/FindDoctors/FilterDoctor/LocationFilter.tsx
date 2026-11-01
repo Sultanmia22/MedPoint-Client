@@ -69,13 +69,13 @@ const LocationFilter = ({selected, onChange}: LocationFilterPops) => {
                   type="button"
                   onClick={() => handleSelect(division.name.toLowerCase())}
                   className={`w-full flex items-center justify-between px-3 py-2.5 text-sm text-left transition-colors duration-100 ${
-                    selected === division.name
+                    selected === division.name.toLowerCase()
                       ? "bg-primary/10 text-primary font-bold"
                       : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
                   }`}
                 >
                   {division.name}
-                  {selected === division.name && (
+                  {selected === division.name.toLowerCase() && (
                     <Check size={14} className="text-primary" />
                   )}
                 </button>
