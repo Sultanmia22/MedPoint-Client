@@ -13,7 +13,7 @@ const ConsultationFee = ({ maxFee, onChange }: ConsultationFeeProps) => {
       <div className="flex items-center justify-between">
         <p className="text-sm font-bold text-base-content">Consultation Fee</p>
         <span className="text-xs font-bold text-primary">
-          Up to: ${maxFee.toLocaleString()}
+          {maxFee === 5000 ? "No limit" : `Up to: $${maxFee.toLocaleString()}`}
         </span>
       </div>
 
