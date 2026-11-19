@@ -18,6 +18,7 @@ import toast from "react-hot-toast";
 
 export default function DoctorSignUpForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
+  const [profilePreview, setProfilePreview] = useState<string | null>(null);
   const router = useRouter();
 
   const {
@@ -32,21 +33,37 @@ export default function DoctorSignUpForm() {
     },
   });
 
-  //  File handle
+  //  File handle for license document
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // File reader preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setFilePreview(reader.result as string);
       };
       reader.readAsDataURL(file);
 
-      // Form value-তে file set করো (base64 string হিসেবে)
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
         setValue("licenseDocumentUrl", fileReader.result as string);
+      };
+      fileReader.readAsDataURL(file);
+    }
+  };
+
+  // Profile image file handle
+  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        setValue("image", fileReader.result as string);
       };
       fileReader.readAsDataURL(file);
     }
@@ -244,6 +261,75 @@ export default function DoctorSignUpForm() {
           />
           {errors.city && (
             <p className="text-red-500 text-sm">{errors.city.message}</p>
+          )}
+        </div>
+
+        {/* Gender */}
+        <div className="space-y-3">
+          <label className="block uppercase text-xs font-bold">Gender</label>
+          <select
+            {...register("gender")}
+            className={`input w-full focus:border-spacing-x-1.5 focus:border-primary outline-0 focus:shadow-sm ${
+              errors.gender ? "border-red-500" : ""
+            }`}
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          {errors.gender && (
+            <p className="text-red-500 text-sm">{errors.gender.message}</p>
+          )}
+        </div>
+
+        {/* Availability */}
+        <div className="space-y-3">
+          <label className="block uppercase text-xs font-bold">Availability</label>
+          <input
+            {...register("availability")}
+            type="text"
+            className={`input w-full focus:border-spacing-x-1.5 focus:border-primary outline-0 focus:shadow-sm ${
+              errors.availability ? "border-red-500" : ""
+            }`}
+            placeholder="e.g. Mon-Fri 9:00 AM - 5:00 PM"
+          />
+          {errors.availability && (
+            <p className="text-red-500 text-sm">{errors.availability.message}</p>
+          )}
+        </div>
+
+        {/* Profile Image */}
+        <div className="space-y-3">
+          <label className="block uppercase text-xs font-bold">
+            Upload Profile Image
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleProfileImageChange}
+            className={`file-input w-full focus:border-primary outline-0 focus:shadow-sm ${
+              errors.image ? "border-red-500" : ""
+            }`}
+          />
+          {profilePreview && (
+            <div className="mt-3">
+              <p className="text-xs text-base-content/60 mb-2">Preview:</p>
+              <div className="relative w-32 h-32">
+                <Image
+                  src={profilePreview}
+                  alt="Profile preview"
+                  fill
+                  className="object-cover rounded border"
+                />
+              </div>
+            </div>
+          )}
+          <p className="text-xs text-base-content/50">
+            Upload a profile image (optional)
+          </p>
+          {errors.image && (
+            <p className="text-red-500 text-sm">{errors.image.message}</p>
           )}
         </div>
 

@@ -48,6 +48,7 @@ const FilterDoctor = () => {
     (filters.minRating !== null ? 1 : 0);
 
   const applyFilters = (): void => {
+
     const params = new URLSearchParams();
 
     const search = filters.search.trim();
@@ -82,6 +83,7 @@ const FilterDoctor = () => {
     }
 
     const query = params.toString();
+    console.log("query",query)
     router.push(query ? `${pathname}?${query}` : pathname);
   };
 
