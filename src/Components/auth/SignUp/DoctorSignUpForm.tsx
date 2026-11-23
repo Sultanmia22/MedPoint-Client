@@ -2,6 +2,7 @@
 
 "use client";
 
+import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight, ShieldCheck } from "lucide-react";
@@ -11,7 +12,7 @@ import {
 } from "@/schemas/authSchemas/signupSchema";
 import { registerUser } from "@/services/authService";
 import { handleApiError } from "@/lib/utils/errorHandler";
-import { useState } from "react";
+import DoctorAvailability from "./DoctorAvailability";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -67,12 +68,13 @@ export default function DoctorSignUpForm() {
       };
       fileReader.readAsDataURL(file);
     }
+
   };
 
   const onSubmit: SubmitHandler<DoctorRegisterFormData> = async (data) => {
     try {
-      // console.log("Form Data:", data);
-
+      console.log("Form Data:", data);
+      
       const result = await registerUser(data);
 
       if (result.success) {
@@ -85,6 +87,7 @@ export default function DoctorSignUpForm() {
       }
     } catch (error) {
       toast.error(handleApiError(error));
+      console.log("Error",error)
     }
   };
 
@@ -283,21 +286,6 @@ export default function DoctorSignUpForm() {
           )}
         </div>
 
-        {/* Availability */}
-        <div className="space-y-3">
-          <label className="block uppercase text-xs font-bold">Availability</label>
-          <input
-            {...register("availability")}
-            type="text"
-            className={`input w-full focus:border-spacing-x-1.5 focus:border-primary outline-0 focus:shadow-sm ${
-              errors.availability ? "border-red-500" : ""
-            }`}
-            placeholder="e.g. Mon-Fri 9:00 AM - 5:00 PM"
-          />
-          {errors.availability && (
-            <p className="text-red-500 text-sm">{errors.availability.message}</p>
-          )}
-        </div>
 
         {/* Profile Image */}
         <div className="space-y-3">
